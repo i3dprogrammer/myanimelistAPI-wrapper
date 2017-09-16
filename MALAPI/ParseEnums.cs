@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MALAPI
 {
-    public class ParseEnums
+    public class ParseEnums //TODO: Actually use the god damn enums.
     {
         public enum RetrieveType
         {
@@ -28,6 +28,8 @@ namespace MALAPI
             Unknown,
             FinishedAiring,
             CurrentlyAiring,
+            NotYetAired,
+            Cancelled,
         }
 
         public enum AnimeType
