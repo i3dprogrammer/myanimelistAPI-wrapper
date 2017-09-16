@@ -43,7 +43,7 @@ namespace MALAPI
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encoded);
         }
 
-        public async Task<UserList> GetUserListAsync(string user="", RetrieveType listType = RetrieveType.Anime)
+        public async Task<UserList> GetUserListAsync(string user = "", RetrieveType listType = RetrieveType.Anime)
         {
             if (user == "") user = m_username;
             string data = await m_client.GetAsync(string.Format(url_userlist, user, listType.ToString().ToLower())).Result.Content.ReadAsStringAsync();
@@ -57,7 +57,7 @@ namespace MALAPI
                 return null;
             string data = await m_client.GetAsync(string.Format(url_search, searchType.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
 
-            if(string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
+            if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
                 return null;
 
             return XMLDeserialize<SearchResult>(data);
@@ -68,7 +68,7 @@ namespace MALAPI
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize<Anime>(addedAnime)),
+                new KeyValuePair<string, string>("data", XMLSerialize(addedAnime)),
             });
             return await m_client.PostAsync(string.Format(url_addAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
@@ -78,7 +78,7 @@ namespace MALAPI
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize<Anime>(newAnime)),
+                new KeyValuePair<string, string>("data", XMLSerialize(newAnime)),
             });
             return await m_client.PostAsync(string.Format(url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
@@ -88,6 +88,33 @@ namespace MALAPI
             CheckAuth();
 
             return await m_client.PostAsync(string.Format(url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> AddManga(Manga addedManga, int mangaId)
+        {
+            CheckAuth();
+
+            HttpContent content = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("data", XMLSerialize(addedManga)),
+            });
+            return await m_client.PostAsync(string.Format(url_addManga, mangaId), content).Result.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> UpdateManga(Manga newManga, int mangaId)
+        {
+            CheckAuth();
+
+            HttpContent content = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("data", XMLSerialize(newManga)),
+            });
+            return await m_client.PostAsync(string.Format(url_updateManga, mangaId), content).Result.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> DeleteManga(int mangaId)
+        {
+            CheckAuth();
+
+            return await m_client.PostAsync(string.Format(url_deleteManga, mangaId), null).Result.Content.ReadAsStringAsync();
         }
 
         private void CheckAuth()

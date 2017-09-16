@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Manga.cs" />
     <Compile Include="GenericXMLDeserializer.cs" />
     <Compile Include="Dto\Anime.cs" />
     <Compile Include="API.cs" />

@@ -8,22 +8,20 @@ using System.Xml.Serialization;
 namespace MALAPI.Dto
 {
     [XmlRoot("entry")]
-    public class Anime
+    public class Manga
     {
-        [XmlElement("episode")]
-        public int Episode { get; set; }
+        [XmlElement("chapter")]
+        public int Chapter { get; set; }
+        [XmlElement("volume")]
+        public int Volume { get; set; }
         [XmlElement("status")]
         public string Status { get; set; }
         [XmlElement("score")]
         public int Score { get; set; }
-        [XmlElement("storage_type")]
-        public int StorageType { get; set; }
-        [XmlElement("storage_value")]
-        public float StorageValue { get; set; }
-        [XmlElement("times_rewatched")]
-        public int TimesRewatched { get; set; }
-        [XmlElement("rewatch_value")]
-        public int RewatchValue { get; set; }
+        [XmlElement("times_reread")]
+        public int TimesReread{ get; set; }
+        [XmlElement("reread_value")]
+        public int RereadValue { get; set; }
 
         [XmlElement("date_start")]
         public string DateStartStr
@@ -49,12 +47,14 @@ namespace MALAPI.Dto
         [XmlElement("priority")]
         public int Priority { get; set; }
         [XmlElement("enable_discussion")]
-        public int EnableDiscussion { get; set; }
-        [XmlElement("enable_rewatching")]
-        public int EnableRewatching { get; set; }
+        public int Enable_discussion { get; set; }
+        [XmlElement("enable_rereading")]
+        public int EnableRereading { get; set; }
         [XmlElement("comments")]
         public string Comments { get; set; }
-        [XmlElement("tags")]
-        public string Tags { get; set; }
+        [XmlElement("scan_group")]
+        public string ScanGroup { get; set; }
+        [XmlElement("retail_volumes")]
+        public string RetailVolumes { get; set; }
     }
 }
