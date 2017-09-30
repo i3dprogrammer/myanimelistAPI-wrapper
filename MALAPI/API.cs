@@ -128,10 +128,9 @@ namespace MALAPI
                     "Try using authentication overload for the constructor.");
 
             string data = await m_client.GetAsync(url_verifycredentials).Result.Content.ReadAsStringAsync();
-            if(data== "Invalid credentials")
+            if(data=="Invalid credentials")
             {
-                throw new Exception("Couldn't use this operations because it requires correct authentication.\n" +
-                    "Try using authentication overload for the constructor.");
+                throw new Exception(data);
             }
         }
     }
