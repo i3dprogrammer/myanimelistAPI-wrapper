@@ -47,12 +47,12 @@ Just create an instance of MALAPI.API and use any of the methods available below
 	</tr>
 		<tr>
 		<td><b>DeleteAnime</b></td>
-		<td>Deletes exiting anime from user's list</td>
+		<td>Deletes existing anime from user's list</td>
 		<td>Required</td>
 	</tr>
 	<tr>
 		<td><b>DeleteManga</b></td>
-		<td>Deletes exiting manga from user's list</td>
+		<td>Deletes existing manga from user's list</td>
 		<td>Required</td>
 	</tr>
 </table>
