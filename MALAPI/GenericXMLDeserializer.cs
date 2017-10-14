@@ -26,7 +26,6 @@ namespace MALAPI
             var serializer = new XmlSerializer(typeof(T));
             var writer = new UTF8StringWriter();
             serializer.Serialize(writer, o, ns);
-            Console.WriteLine(writer.ToString());
             return writer.ToString();
         }
     }

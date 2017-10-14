@@ -23,10 +23,12 @@ namespace MALAPI
         private const string url_addManga = "https://myanimelist.net/api/mangalist/add/{0}.xml";
         private const string url_updateManga = "https://myanimelist.net/api/mangalist/update/{0}.xml";
         private const string url_deleteManga = "https://myanimelist.net/api/mangalist/delete/{0}.xml";
+        private const string url_verifycredentials = "https://myanimelist.net/api/account/verify_credentials.xml";
         #endregion
 
         private HttpClient m_client;
         private string m_username, m_password;
+        private Boolean validCredentials = false;
 
         public API()
         {
@@ -41,25 +43,28 @@ namespace MALAPI
             m_client = new HttpClient();
             var encoded = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encoded);
+            CheckAuth();
         }
 
         public async Task<UserList> GetUserListAsync(string user = "", RetrieveType listType = RetrieveType.Anime)
         {
+            CheckAuth();
+
             if (user == "") user = m_username;
             string data = await m_client.GetAsync(string.Format(url_userlist, user, listType.ToString().ToLower())).Result.Content.ReadAsStringAsync();
-            Console.WriteLine(data.Length);
             return XMLDeserialize<UserList>(data);
         }
 
         public async Task<SearchResult> SearchForAsync(string searchQuery, RetrieveType searchType = RetrieveType.Anime)
         {
+            CheckAuth();
+
             if (string.IsNullOrEmpty(searchQuery))
                 return null;
             string data = await m_client.GetAsync(string.Format(url_search, searchType.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
 
             if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
                 return null;
-
             return XMLDeserialize<SearchResult>(data);
         }
 
@@ -117,11 +122,21 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_deleteManga, mangaId), null).Result.Content.ReadAsStringAsync();
         }
 
-        private void CheckAuth()
+        private async void CheckAuth()
         {
             if (string.IsNullOrEmpty(m_username) || string.IsNullOrEmpty(m_password))
                 throw new Exception("Couldn't use this operations because it requires correct authentication.\n" +
                     "Try using authentication overload for the constructor.");
+
+            if (!validCredentials)
+            {
+                string data = await m_client.GetAsync(url_verifycredentials).Result.Content.ReadAsStringAsync();
+                if (data == "Invalid credentials")
+                {
+                    throw new Exception(data);
+                }
+                validCredentials = true;
+            }
         }
     }
 }
