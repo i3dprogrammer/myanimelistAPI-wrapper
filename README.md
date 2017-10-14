@@ -6,12 +6,11 @@ This is a C# API Wrapper for myanimelist, it's fairly easy to use(and to impleme
 Just create an instance of MALAPI.API and use any of the methods available below.
 
 
-
 # Features
 <ul>
-<li> Search myanimelist for anime/manga (requires auth) </li>
-<li> Retrieve anime/manga list for specific user (Doesn't require auth) </li>
-<li> Add anime/manga to specific user's list (requires auth) </li>
-<li> Update existing anime/manga in user's list (requires auth) </li>
-<li> Delete exiting anime/manga from user's list (requires auth) </li>
+<li> <b>GetUserListAsync</b> Retrieve anime/manga list for specific user (doesn't require auth) </li>
+<li> <b>SearchForAsync</b> Search myanimelist for anime/manga (requires auth) </li>
+<li> <b>AddAnime</b> <b>AddManga</b> Add anime/manga to specific user's list (requires auth) </li>
+<li> <b>UpdateAnime</b> <b>UpdateManga</b> Update existing anime/manga in user's list (requires auth) </li>
+<li> <b>DeleteAnime</b> <b>DeleteManga</b> Delete exiting anime/manga from user's list (requires auth) </li>
 </ul>
