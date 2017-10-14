@@ -28,7 +28,7 @@ namespace MALAPI
 
         private HttpClient m_client;
         private string m_username, m_password;
-        private Boolean validCredentials = false;
+        private bool validCredentials = false;
 
         public API()
         {
@@ -43,13 +43,12 @@ namespace MALAPI
             m_client = new HttpClient();
             var encoded = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encoded);
+
             CheckAuth();
         }
 
         public async Task<UserList> GetUserListAsync(string user = "", RetrieveType listType = RetrieveType.Anime)
         {
-            CheckAuth();
-
             if (user == "") user = m_username;
             string data = await m_client.GetAsync(string.Format(url_userlist, user, listType.ToString().ToLower())).Result.Content.ReadAsStringAsync();
             return XMLDeserialize<UserList>(data);
