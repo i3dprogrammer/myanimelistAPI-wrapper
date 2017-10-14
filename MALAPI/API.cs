@@ -12,6 +12,9 @@ using static MALAPI.ParseEnums;
 
 namespace MALAPI
 {
+    /// <summary>
+    /// A Wrapper for myanimelist in C#.
+    /// </summary>
     public class API
     {
         #region Links
@@ -30,11 +33,20 @@ namespace MALAPI
         private string m_username, m_password;
         private bool validCredentials = false;
 
+        /// <summary>
+        /// Initializes new client without authentication.
+        /// <para>Using methods that require Auth will throw an exception e.g. SearchForAsync, AddAnime, etc..</para>
+        /// </summary>
         public API()
         {
             m_client = new HttpClient();
         }
 
+        /// <summary>
+        /// Initializes new client with authentication.
+        /// </summary>
+        /// <param name="username">myanimelist Username</param>
+        /// <param name="password">myanimelist Password</param>
         public API(string username, string password)
         {
             m_username = username;
@@ -47,6 +59,12 @@ namespace MALAPI
             CheckAuth();
         }
 
+        /// <summary>
+        /// Retrieves anime/manga list for specific user, no Auth required.
+        /// </summary>
+        /// <param name="user">The username you want to retrieve the list to (if not specified uses myanimelist username).</param>
+        /// <param name="listType">The list type you want to retrieve as a MALAPI.ParseEnums.RetrieveType enum.</param>
+        /// <returns></returns>
         public async Task<UserList> GetUserListAsync(string user = "", RetrieveType listType = RetrieveType.Anime)
         {
             if (user == "") user = m_username;
@@ -54,6 +72,12 @@ namespace MALAPI
             return XMLDeserialize<UserList>(data);
         }
 
+        /// <summary>
+        /// Searches myanimelist for anime/manga, Auth required.
+        /// </summary>
+        /// <param name="searchQuery">The query to search for.</param>
+        /// <param name="searchType">The search type you want to retrieve as a MALAPI.ParseEnums.RetrieveType enum.</param>
+        /// <returns></returns>
         public async Task<SearchResult> SearchForAsync(string searchQuery, RetrieveType searchType = RetrieveType.Anime)
         {
             CheckAuth();
@@ -67,6 +91,12 @@ namespace MALAPI
             return XMLDeserialize<SearchResult>(data);
         }
 
+        /// <summary>
+        /// Adds anime to specific user's list.
+        /// </summary>
+        /// <param name="addedAnime">The new added anime to the list.</param>
+        /// <param name="animeId">The ID of the new added anime.</param>
+        /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
         public async Task<string> AddAnime(Anime addedAnime, int animeId)
         {
             CheckAuth();
@@ -77,6 +107,12 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_addAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Updates existing anime in user's list.
+        /// </summary>
+        /// <param name="newAnime">The updated anime object.</param>
+        /// <param name="animeId">the ID of the anime you want to update.</param>
+        /// <returns>A string represnting the state of updating "Updated" or detailed error message.</returns>
         public async Task<string> UpdateAnime(Anime newAnime, int animeId)
         {
             CheckAuth();
@@ -87,6 +123,11 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Deletes existing anime from user's list.
+        /// </summary>
+        /// <param name="animeId">The anime ID to delete from the list.</param>
+        /// <returns>A string represnting the state of deleting "Deleted" or detailed error message.</returns>
         public async Task<string> DeleteAnime(int animeId)
         {
             CheckAuth();
@@ -94,6 +135,12 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Adds manga to specific user's list.
+        /// </summary>
+        /// <param name="addedManga">The new added manga to the list.</param>
+        /// <param name="mangaId">The ID of the new added manga.</param>
+        /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
         public async Task<string> AddManga(Manga addedManga, int mangaId)
         {
             CheckAuth();
@@ -104,6 +151,12 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_addManga, mangaId), content).Result.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Updates existing manga in user's list.
+        /// </summary>
+        /// <param name="newManga">The updated manga object.</param>
+        /// <param name="mangaId">the ID of the manga you want to update.</param>
+        /// <returns>A string represnting the state of updating "Updated" or detailed error message.</returns>
         public async Task<string> UpdateManga(Manga newManga, int mangaId)
         {
             CheckAuth();
@@ -114,6 +167,11 @@ namespace MALAPI
             return await m_client.PostAsync(string.Format(url_updateManga, mangaId), content).Result.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Deletes existing manga from user's list.
+        /// </summary>
+        /// <param name="mangaId">The manga ID to delete from the list.</param>
+        /// <returns>A string represnting the state of deleting "Deleted" or detailed error message.</returns>
         public async Task<string> DeleteManga(int mangaId)
         {
             CheckAuth();
