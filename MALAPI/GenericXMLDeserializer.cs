@@ -22,7 +22,7 @@ namespace MALAPI
         public static string XMLSerialize<T>(T o)
         {
             var ns = new XmlSerializerNamespaces();
-            ns.Add(string.Empty, string.Empty);
+            ns.Add(string.Empty, string.Empty); //Remove the namespaces
             var serializer = new XmlSerializer(typeof(T));
             var writer = new UTF8StringWriter();
             serializer.Serialize(writer, o, ns);

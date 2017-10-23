@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>3dprogrammer</authors>
+    <owners>i3dprogrammer</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/i3dprogrammer/myanimelistAPI-wrapper</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>A C# Wrapper for myanimelist main API. It contains async and sync methods for all available methods by myanimelist.</description>
+    <releaseNotes>First release of MALAPI C# Wrapper.</releaseNotes>
+    <copyright>Copyright ©2017 3DProgrammer</copyright>
+    <tags>MAL myanimelist api wrapper C# anime manga database db</tags>
+	<packageTypes>
+		<packageType name="Dependency" />
+	</packageTypes>
+  </metadata>
+</package>

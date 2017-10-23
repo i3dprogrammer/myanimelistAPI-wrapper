@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MALAPI")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MALAPI-Wrapper")]
+[assembly: AssemblyDescription("A C# Wrapper for myanimelist main API. It contains async and sync methods for all available methods by myanimelist.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MALAPI")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("3DProgrammer")]
+[assembly: AssemblyProduct("MALAPI-Wrapper")]
+[assembly: AssemblyCopyright("Copyright ©  2017 3DProgrammer")]
+[assembly: AssemblyTrademark("i3dprogrammer")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

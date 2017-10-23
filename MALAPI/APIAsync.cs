@@ -14,7 +14,7 @@ namespace MALAPI
     /// <summary>
     /// A Wrapper for myanimelist in C#.
     /// </summary>
-    public class API
+    public class APIAsync
     {
         #region Links
         private const string url_userlist = "https://myanimelist.net/malappinfo.php?u={0}&status=all&type={1}"; //TODO Figure out status.
@@ -36,7 +36,7 @@ namespace MALAPI
         /// Initializes new client without authentication.
         /// <para>Using methods that require Auth will throw an exception e.g. SearchForAsync, AddAnime, etc..</para>
         /// </summary>
-        public API()
+        public APIAsync()
         {
             m_client = new HttpClient();
         }
@@ -46,7 +46,7 @@ namespace MALAPI
         /// </summary>
         /// <param name="username">myanimelist Username</param>
         /// <param name="password">myanimelist Password</param>
-        public API(string username, string password)
+        public APIAsync(string username, string password)
         {
             m_username = username;
             m_password = password;
@@ -62,11 +62,11 @@ namespace MALAPI
         /// Retrieves anime/manga list for specific user, no Auth required.
         /// </summary>
         /// <param name="user">The username you want to retrieve the list to (if not specified uses myanimelist username).</param>
-        /// <returns>Returns an instance of UserAnimeList on success.</returns>
-        public UserAnimeList GetUserAnimeList(string user = "")
+        /// <returns></returns>
+        public async Task<UserAnimeList> GetUserAnimeListAsync(string user = "")
         {
             if (user == "") user = m_username;
-            string data = m_client.GetAsync(string.Format(url_userlist, user, RetrieveType.Anime.ToString().ToLower())).Result.Content.ReadAsStringAsync().Result;
+            string data = await m_client.GetAsync(string.Format(url_userlist, user, RetrieveType.Anime.ToString().ToLower())).Result.Content.ReadAsStringAsync();
             return XMLDeserialize<UserAnimeList>(data);
         }
 
@@ -74,11 +74,11 @@ namespace MALAPI
         /// Retrieves anime/manga list for specific user, no Auth required.
         /// </summary>
         /// <param name="user">The username you want to retrieve the list to (if not specified uses myanimelist username).</param>
-        /// <returns>Returns an instance of UserMangaList on success.</returns>
-        public UserMangaList GetUserMangaList(string user = "")
+        /// <returns></returns>
+        public async Task<UserMangaList> GetUserMangaListAsync(string user = "")
         {
             if (user == "") user = m_username;
-            string data = m_client.GetAsync(string.Format(url_userlist, user, RetrieveType.Manga.ToString().ToLower())).Result.Content.ReadAsStringAsync().Result;
+            string data = await m_client.GetAsync(string.Format(url_userlist, user, RetrieveType.Manga.ToString().ToLower())).Result.Content.ReadAsStringAsync();
             return XMLDeserialize<UserMangaList>(data);
         }
 
@@ -86,14 +86,14 @@ namespace MALAPI
         /// Searches myanimelist for anime, Auth required.
         /// </summary>
         /// <param name="searchQuery">The query to search for.</param>
-        /// <returns>Returns an instance of AnimeSearchResult on success.</returns>
-        public AnimeSearchResult SearchForAnime(string searchQuery)
+        /// <returns></returns>
+        public async Task<AnimeSearchResult> SearchForAnimeAsync(string searchQuery)
         {
             CheckAuth();
 
             if (string.IsNullOrEmpty(searchQuery))
                 return null;
-            string data = m_client.GetAsync(string.Format(url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync().Result;
+            string data = await m_client.GetAsync(string.Format(url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
 
             if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
                 return null;
@@ -105,14 +105,14 @@ namespace MALAPI
         /// Searches myanimelist for anime, Auth required.
         /// </summary>
         /// <param name="searchQuery">The query to search for.</param>
-        /// <returns>Returns an instance of MangaSearchResult on success.</returns>
-        public MangaSearchResult SearchForManga(string searchQuery)
+        /// <returns></returns>
+        public async Task<MangaSearchResult> SearchForMangaAsync(string searchQuery)
         {
             CheckAuth();
 
             if (string.IsNullOrEmpty(searchQuery))
                 return null;
-            string data = m_client.GetAsync(string.Format(url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync().Result;
+            string data = await m_client.GetAsync(string.Format(url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
 
             if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
                 return null;
@@ -126,14 +126,14 @@ namespace MALAPI
         /// <param name="addedAnime">The new added anime to the list.</param>
         /// <param name="animeId">The ID of the new added anime.</param>
         /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
-        public string AddAnime(Anime addedAnime, int animeId)
+        public async Task<string> AddAnimeAsync(Anime addedAnime, int animeId)
         {
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("data", XMLSerialize(addedAnime)),
             });
-            return m_client.PostAsync(string.Format(url_addAnime, animeId), content).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_addAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -142,14 +142,14 @@ namespace MALAPI
         /// <param name="newAnime">The updated anime object.</param>
         /// <param name="animeId">the ID of the anime you want to update.</param>
         /// <returns>A string represnting the state of updating "Updated" or detailed error message.</returns>
-        public string UpdateAnime(Anime newAnime, int animeId)
+        public async Task<string> UpdateAnimeAsync(Anime newAnime, int animeId)
         {
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("data", XMLSerialize(newAnime)),
             });
-            return m_client.PostAsync(string.Format(url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -157,11 +157,11 @@ namespace MALAPI
         /// </summary>
         /// <param name="animeId">The anime ID to delete from the list.</param>
         /// <returns>A string represnting the state of deleting "Deleted" or detailed error message.</returns>
-        public string DeleteAnime(int animeId)
+        public async Task<string> DeleteAnimeAsync(int animeId)
         {
             CheckAuth();
 
-            return m_client.PostAsync(string.Format(url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -170,14 +170,14 @@ namespace MALAPI
         /// <param name="addedManga">The new added manga to the list.</param>
         /// <param name="mangaId">The ID of the new added manga.</param>
         /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
-        public string AddManga(Manga addedManga, int mangaId)
+        public async Task<string> AddMangaAsync(Manga addedManga, int mangaId)
         {
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("data", XMLSerialize(addedManga)),
             });
-            return m_client.PostAsync(string.Format(url_addManga, mangaId), content).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_addManga, mangaId), content).Result.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -186,14 +186,14 @@ namespace MALAPI
         /// <param name="newManga">The updated manga object.</param>
         /// <param name="mangaId">the ID of the manga you want to update.</param>
         /// <returns>A string represnting the state of updating "Updated" or detailed error message.</returns>
-        public string UpdateManga(Manga newManga, int mangaId)
+        public async Task<string> UpdateMangaAsync(Manga newManga, int mangaId)
         {
             CheckAuth();
 
             HttpContent content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("data", XMLSerialize(newManga)),
             });
-            return m_client.PostAsync(string.Format(url_updateManga, mangaId), content).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_updateManga, mangaId), content).Result.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -201,22 +201,22 @@ namespace MALAPI
         /// </summary>
         /// <param name="mangaId">The manga ID to delete from the list.</param>
         /// <returns>A string represnting the state of deleting "Deleted" or detailed error message.</returns>
-        public string DeleteManga(int mangaId)
+        public async Task<string> DeleteMangaAsync(int mangaId)
         {
             CheckAuth();
 
-            return m_client.PostAsync(string.Format(url_deleteManga, mangaId), null).Result.Content.ReadAsStringAsync().Result;
+            return await m_client.PostAsync(string.Format(url_deleteManga, mangaId), null).Result.Content.ReadAsStringAsync();
         }
 
-        private void CheckAuth()
+        private async void CheckAuth()
         {
             if (string.IsNullOrEmpty(m_username) || string.IsNullOrEmpty(m_password))
-                throw new Exception("Couldn't use this method because it requires correct authentication.\n" +
-                    "Try using the authentication overload for the constructor.");
+                throw new Exception("Couldn't use this operations because it requires correct authentication.\n" +
+                    "Try using authentication overload for the constructor.");
 
             if (!validCredentials)
             {
-                string data = m_client.GetAsync(url_verifycredentials).Result.Content.ReadAsStringAsync().Result;
+                string data = await m_client.GetAsync(url_verifycredentials).Result.Content.ReadAsStringAsync();
                 if (data == "Invalid credentials")
                 {
                     throw new Exception(data);
