@@ -3,7 +3,7 @@ Adds anime entry to specific user's list.
 
 ### Parameters
 
-| Parameter Type | Name | Description |
+| Type | Name | Description |
 | -------------- | ---- | ----------- |
 | [AnimeEntry] | addedAnime | The anime entry you want to add to the list.|
 | System.Int32 | animeId | The id of the anime entry. |
