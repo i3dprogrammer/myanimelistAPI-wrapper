@@ -2,7 +2,7 @@
 This is a C# API Wrapper for myanimelist, it's fairly easy to use. Check below for documentation.
 
 # Getting started
-* Download [MALAPIv2.0.0 (xxx KB)]() - Requires .NET Framework 4.5
+* Download [MALAPIv2.0.0 (xxx KB)](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/releases/download/v2.0.0/MALAPIv2.0.0.zip) - Requires .NET Framework 4.5
 
 # Sample examples
 <h3>Example 1</h3>
