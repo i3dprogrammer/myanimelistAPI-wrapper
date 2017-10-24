@@ -114,16 +114,6 @@ A controller to manage myanimelist manga API. <br/><b>Requires API authenticatio
 | [DeleteManga] | Deletes existing manga from user's list. |
 | [DeleteMangaAsync] |  Deletes existing manga from user's list asynchronously. |
 
-### UsersController
-A controller to manage myanimelist user lists API. <br/><b>Doesn't require API authentication.</b>
-
-| Method name | Method description |
-| ----------- | ------------------ |
-| [GetUserAnimeList] | Retrieves anime list for specific user. |
-| [GetUserAnimeListAsync] | Retrieves anime list for specific user asynchronously. |
-| [GetUserMangaList] | Retrieves manga list for specific user. |
-| [GetUserMangaListAsync] | Retrieves manga list for specific user asynchronously. |
-
 ### SearchController
 A controller to manage myanimelist search API. <br/><b>Requires API authentication.</b>
 
@@ -133,6 +123,17 @@ A controller to manage myanimelist search API. <br/><b>Requires API authenticati
 | [SearchForAnimeAsync] | Searches myanimelist for anime asynchronously. |
 | [SearchForManga] | Searches myanimelist for manga. |
 | [SearchForMangaAsync] | Searches myanimelist for manga asynchronously. |
+
+
+### UsersController
+A controller to manage myanimelist user lists API. <br/><b>Doesn't require API authentication.</b>
+
+| Method name | Method description |
+| ----------- | ------------------ |
+| [GetUserAnimeList] | Retrieves anime list for specific user. |
+| [GetUserAnimeListAsync] | Retrieves anime list for specific user asynchronously. |
+| [GetUserMangaList] | Retrieves manga list for specific user. |
+| [GetUserMangaListAsync] | Retrieves manga list for specific user asynchronously. |
 
 [AnimeController]: <#animecontroller>
 [MangaController]: <#mangacontroller>
@@ -153,12 +154,12 @@ A controller to manage myanimelist search API. <br/><b>Requires API authenticati
 [DeleteManga]: <#deletemanga>
 [DeleteMangaAsync]: <#deletemangaasync>
 
-[GetUserAnimeList]: <#getuseranimelist>
-[GetUserAnimeListAsync]: <#getuseranimelistasync>
-[GetUserMangaList]: <#getusermangalist>
-[GetUserMangaListAsync]: <#getusermangalistasync>
-
 [SearchForAnime]: <#searchforanime>
 [SearchForAnimeAsync]: <#searchforanimeasync>
 [SearchForManga]: <#searchformanga>
 [SearchForMangaAsync]: <#searchformangaasync>
+
+[GetUserAnimeList]: <#getuseranimelist>
+[GetUserAnimeListAsync]: <#getuseranimelistasync>
+[GetUserMangaList]: <#getusermangalist>
+[GetUserMangaListAsync]: <#getusermangalistasync>
