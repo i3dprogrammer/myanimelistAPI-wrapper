@@ -25,7 +25,7 @@ This is a anime search entry result that holds information about one search resu
 | [System.String] | Synopsis | Anime story description. |
 | [System.String] | ImageLink | Anime image link. |
 
-[MALAPI.Dto.AnimeSearchEntry]: <#animesearchentry>
+[AnimeSearchEntry]: <#animesearchentry>
 [System.String]: <https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx>
 [System.Int32]: <https://msdn.microsoft.com/en-us/library/system.int32(v=vs.80).aspx>
 [System.DateTime]: <https://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx>
