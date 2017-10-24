@@ -1,59 +1,78 @@
 # myanimelistAPI-wrapper
-This is a C# API Wrapper for myanimelist, it's fairly easy to use(and to implement one yourself).
+This is a C# API Wrapper for myanimelist, it's fairly easy to use. Check below for documentation.
 
-# Download
-Requires .NET Framework 4.6.2 <br/>
-<a href='https://github.com/i3dprogrammer/myanimelistAPI-wrapper/releases/download/1.0.0.0/MALAPI.dll'>MALAPI.dll (30.5 KB)</a>
+# Getting started
+* Download [MALAPIv2.0.0 (xxx KB)]() - Requires .NET Framework 4.5
 
-# How to use
-Just create an instance of MALAPI.API and use any of the methods available below.
+# Sample examples
+<h3>Example 1</h3>
 
+```cs
+var api = new MALAPI.API("USERNAME", "PASSWORD");
+var searchResult = api.Search.SearchForAnime("Full Metal");
+foreach (var entry in searchResult.Entries)
+{
+	if (entry.StartDate.Ticks == 0) //If there's no start date.
+		Console.WriteLine($"{entry.Title} -> Not yet aired.");
+	else if (entry.EndDate.Ticks == 0) //If there's no end date.
+		Console.WriteLine($"{entry.Title} -> {entry.StartDate.ToShortDateString()} to unknown.");
+	else
+		Console.WriteLine($"{entry.Title} -> {entry.StartDate.ToShortDateString()} to {entry.EndDate.ToShortDateString()}");
+}
+```
 
-# Features
-<table>
-	<tr>
-		<td>Method</td>
-		<td>Description</td>
-		<td>Authentication</td>
-	</tr>
-	<tr>
-		<td><b>GetUserListAsync</b></td>
-		<td>Retrieves anime/manga list for specific user</td>
-		<td>Not Required</td>
-	</tr>
-	<tr>
-		<td><b>SearchForAsync</b></td>
-		<td>Searches myanimelist for anime/manga</td>
-		<td>Required</td>
-	</tr>
-	<tr>
-		<td><b>AddAnime</b></td>
-		<td>Adds anime to specific user's list</td>
-		<td>Required</td>
-	</tr>
-	<tr>
-		<td><b>AddManga</b></td>
-		<td>Adds manga to specific user's list</td>
-		<td>Required</td>
-	</tr>
-	<tr>
-		<td><b>UpdateAnime</b></td>
-		<td>Updates existing anime in user's list</td>
-		<td>Required</td>
-	</tr>
-	<tr>
-		<td><b>UpdateManga</b></td>
-		<td>Updates existing manga in user's list</td>
-		<td>Required</td>
-	</tr>
-		<tr>
-		<td><b>DeleteAnime</b></td>
-		<td>Deletes existing anime from user's list</td>
-		<td>Required</td>
-	</tr>
-	<tr>
-		<td><b>DeleteManga</b></td>
-		<td>Deletes existing manga from user's list</td>
-		<td>Required</td>
-	</tr>
-</table>
+In the above example we search for `Full Metal` and print the result based on their start/end dates. <br/>
+We use Search Controller, as Search requires myanimelist authentication we've used API Constructor with username and password.
+
+<h3>Example 2</h3>
+
+```cs
+var api = new MALAPI.API(); //Doesn't require authentication.
+var list = api.Users.GetUserAnimeList("3dprogrammer");
+Console.WriteLine($"{list.Info.DaysSpentWatching} days watching anime.");
+foreach (var entry in list.Animes)
+{
+	    Console.WriteLine($"{entry.SeriesTitle} - {entry.MyStatus} # {entry.MyScore}");
+}
+```
+
+Here we get `3dprogrammer` user anime list, print out the total days he spent watching anime and print `3dprogrammer` anime list in a nice fashion. <br/>
+We use Users Controller which doesn't require authentication. (Here you can use either one of the constructors, both will function the same).
+
+<h3>Example 3</h3>
+
+```cs
+var api = new MALAPI.API("USERNAME", "PASSWORD");
+var searchResult = await api.Search.SearchForAnimeAsync("Bakuman");
+foreach (var entry in searchResult.Entries)
+{
+	//This is the exact same as the bottom one.
+	if (entry.EntryType == MALAPI.AnimeType.TV)
+	{
+		var anime = new MALAPI.Dto.AnimeEntry();
+		anime.Status = MALAPI.AnimeListStatus.Completed;
+		anime.Score = MALAPI.EntryScore.Masterpiece;
+		var result = await api.Anime.AddAnimeAsync(anime, entry.Id);
+		Console.WriteLine(result); //Created or detailed error message.
+	}
+
+	//OR
+	if (entry.EntryType == MALAPI.AnimeType.TV)
+	{
+		var result = await api.Anime.AddAnimeAsync(entry, MALAPI.AnimeListStatus.Completed);
+		Console.WriteLine(result); //Created or detailed error message.
+	}
+}
+```
+
+In the last example we use async method to search asynchronously for the anime `Bakuman` and then add it to our list if the type of the anime series is `MALAPI.AnimeType.TV`. By two different ways
+<ul>
+	<li>Create the AnimeEntry ourself and populate it with data then add it to the list. </li>
+	<li>Or just add the search result entry.</li>
+</ul>
+
+<b>Note that you should use either one of the methods above in the example to add anime, using two will only result in error message.</b>
+
+We Use the Anime/Manga Controllers to Add, Update or Delete entries from the authenticated user's list.
+
+# Documentation
