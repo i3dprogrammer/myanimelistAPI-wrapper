@@ -20,7 +20,7 @@ foreach (var entry in searchResult.Entries)
 		Console.WriteLine($"{entry.Title} -> {entry.StartDate.ToShortDateString()} to {entry.EndDate.ToShortDateString()}");
 }
 ```
-
+<hr/>
 In the above example we search for `Full Metal` and print the result based on their start/end dates. <br/>
 We use Search Controller, as Search requires myanimelist authentication we've used API Constructor with username and password.
 
