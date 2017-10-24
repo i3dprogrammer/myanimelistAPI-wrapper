@@ -3,8 +3,8 @@ Deletes existing anime from user's list asynchronously.
 
 ### Parameters
 
-| Name | Description |
-| ---- | ----------- |
+| Type | Name | Description |
+| ---- | ---- | ----------- |
 | System.Int32 animeId | The anime entry ID to delete from the list. |
 
 ### Returns
