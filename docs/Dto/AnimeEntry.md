@@ -4,7 +4,7 @@ An object the holds anime data to be added or updated in a specific user anime l
 | Property Name | Property Description |
 | ------------- | -------------------- |
 | [System.Int32] WatchedEpisodes | The count of episodes you watched from this anime. |
-| [MALAPI.AnimeListStatus] Status | The status of the anime -> Watching, Completed, Dropped, Onhold or PlatToWatch. |
+| [MALAPI.AnimeListStatus] Status | The status of the anime `Watching, Completed, Dropped, Onhold or PlatToWatch`. |
 | [MALAPI.EntryScore] Score | The score you give this anime. |
 | [System.Int32] ScoreInt | The score you give this anime as int (1-10). |
 | [System.Int32] StorageType | Unknown. |
@@ -16,8 +16,8 @@ An object the holds anime data to be added or updated in a specific user anime l
 | [System.DateTime] DateEnd | The date you finished watching this anime. |
 | [System.String] DateEndStr | he date you finished watching this anime as string format `mmddyyyy`. |
 | [System.Int32] Priority | The anime priority on the list. |
-| [System.Int32] EnableDiscussion | Enable anime discussion. 0 = Disabled, 1 = Enabled. |
-| [System.Int32] EnableRewatching | Enable anime rewatching. 0 = Disabled, 1 = Enabled. |
+| [System.Int32] EnableDiscussion | Enable anime discussion `0 = Disabled, 1 = Enabled`. |
+| [System.Int32] EnableRewatching | Enable anime rewatching `0 = Disabled, 1 = Enabled`. |
 | [System.String] Comments | Comments about this anime. |
 | [System.String] Tags | Unknown. |
 
