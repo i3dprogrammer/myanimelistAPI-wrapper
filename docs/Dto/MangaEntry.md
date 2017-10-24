@@ -1,5 +1,6 @@
 ## MangaEntry
 An object the holds manga data to be added or updated in a specific user manga list.
+
 | Property Type | Property Name | Property Description |
 | ------------- | ------------- | -------------------- |
 | System.Int32 | ReadChapters | The count of chapters you've read from this manga. |
