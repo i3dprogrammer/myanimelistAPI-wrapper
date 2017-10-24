@@ -3,7 +3,7 @@ The object returned when searching for specific anime query.
 
 | Property Type | Property Name | Property Description |
 | ------------- | ------------- | -------------------- |
-| List<[MALAPI.Dto.AnimeSearchEntry]> | Entries | List of entries found by the search or a null list if nothing is found.|
+| [List]<[AnimeSearchEntry]> | Entries | List of entries found by the search or a null list if nothing is found.|
 
 ## AnimeSearchEntry
 This is a anime search entry result that holds information about one search result.
@@ -31,3 +31,4 @@ This is a anime search entry result that holds information about one search resu
 [System.DateTime]: <https://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx>
 [MALAPI.AnimeType]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animetype>
 [System.Single]: <https://msdn.microsoft.com/en-us/library/system.single(v=vs.80).aspx>
+[List]: <https://msdn.microsoft.com/en-us/library/6sh2ey19(v=vs.110).aspx>
