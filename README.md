@@ -85,12 +85,16 @@ We Use the Anime/Manga Controllers to Add, Update or Delete entries from the aut
 This is the main API object you deal with the entire time. You use it to manage all the Controllers.
 There's 2 constructors available for this class.
 
-```cs var api = new MALAPI.API() ```
+```cs
+var api = new MALAPI.API()
+```
 
 Initializes new mal client without any authentication. Using Controllers that requires authentication such as AnimeController / SearchController with throw an exception.
 
-```cs MALAPI.API(string MAL_username, string MAL_password) ```
-Initializes new client with myanimelist authentication.
+```cs 
+var api = new MALAPI.API("USERNAME","PASSWORD")
+```
+Initializes new authenticated myanimelist client.
 
 | API Controllers |
 | ----------------- |
