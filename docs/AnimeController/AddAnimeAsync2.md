@@ -10,5 +10,6 @@ Adds found anime search entry to specific user's list asynchronously.
 
 ### Returns
 System.String represnting the state of adding "Created" or detailed error message.
+
 [AnimeSearchEntry]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Dto/AnimeSearch.md#animesearchentry>
 [AnimeListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animeliststatus>
