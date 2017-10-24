@@ -30,3 +30,4 @@ This is a anime search entry result that holds information about one search resu
 [System.Int32]: <https://msdn.microsoft.com/en-us/library/system.int32(v=vs.80).aspx>
 [System.DateTime]: <https://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx>
 [MALAPI.AnimeType]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animetype>
+[System.Single]: <https://msdn.microsoft.com/en-us/library/system.single(v=vs.80).aspx>
