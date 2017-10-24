@@ -1,4 +1,4 @@
-# myanimelistAPI-wrapper
+# Description
 A C# Wrapper for myanimelist main API. It contains async and sync methods for all available methods by myanimelist. Check documentation and examples below.
 
 # Getting started
