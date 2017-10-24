@@ -80,3 +80,140 @@ In the last example we use async method to search asynchronously for the anime `
 We Use the Anime/Manga Controllers to Add, Update or Delete entries from the authenticated user's list.
 
 # Documentation
+
+| API Controllers | |
+| ----------------- | ----------------- |
+| [AnimeController] | [MangaController] |
+| [UsersController] | [SearchController] |
+
+### AnimeController
+A controller to managa myanimelist anime API.
+
+| Method name | Method description |
+| ----------- | ------------------ |
+| [AddAnime] | Adds anime entry to specific user's list. |
+| [AddAnime] | Adds found anime search entry to specific user's list. |
+| [AddAnimeAsync] | Adds anime entry to specific user's list asynchronously. |
+| [AddAnimeAsync] | Adds found anime search entry to specific user's list asynchronously. |
+| [UpdateAnime] | Updates existing anime in user's list. |
+| [UpdateAnimeAsync] | Updates existing anime in user's list asynchronously. |
+| [DeleteAnime] | Deletes existing anime from user's list. |
+| [DeleteAnimeAsync] |  Deletes existing anime from user's list asynchronously. |
+
+
+#### AddAnime
+Adds anime entry to specific user's list.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeEntry] addedAnime | The anime entry you want to add to the list.|
+| [System.Int32] animeId | The id of the anime entry. |
+
+##### Returns
+[System.String] represnting the state of adding "Created" or detailed error message.
+
+#### AddAnime
+Adds found anime search entry to specific user's list.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeSearchEntry] searchEntry | The anime search entry you found.|
+| [MALAPI.AnimeListStatus] status | The status of the anime Watching, Completed, Onhold, Dropped or PlanToWatch. |
+
+##### Returns
+[System.String] represnting the state of adding "Created" or detailed error message.
+
+#### AddAnimeAsync
+Adds anime entry to specific user's list asynchronously.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeEntry] addedAnime | The anime entry you want to add to the list.|
+| [System.Int32] animeId | The id of the anime entry. |
+
+##### Returns
+[System.String] represnting the state of adding "Created" or detailed error message.
+
+#### AddAnimeAsync
+Adds found anime search entry to specific user's list asynchronously.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeSearchEntry] searchEntry | The anime search entry you found.|
+| [MALAPI.AnimeListStatus] status | The status of the anime Watching, Completed, Onhold, Dropped or PlanToWatch. |
+
+##### Returns
+[System.String] represnting the state of adding "Created" or detailed error message.
+
+#### UpdateAnime
+Updates existing anime in user's list.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeEntry] newAnimeInfo | The updated anime entry. |
+| [System.Int32] animeId | the ID of the anime entry you want to update. |
+
+##### Returns
+[System.String] represnting the state of updating "Updated" or detailed error message.
+
+#### UpdateAnimeAsync
+Updates existing anime in user's list asynchronously.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [MALAPI.Dto.AnimeEntry] newAnimeInfo | The updated anime entry. |
+| [System.Int32] animeId | the ID of the anime entry you want to update. |
+
+##### Returns
+[System.String] represnting the state of updating "Updated" or detailed error message.
+
+#### DeleteAnime
+Deletes existing anime from user's list.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [System.Int32] animeId | The anime entry ID to delete from the list. |
+
+##### Returns
+[System.String] represnting the state of deleting "Deleted" or detailed error message.
+
+#### DeleteAnimeAsync
+Deletes existing anime from user's list asynchronously.
+
+##### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| [System.Int32] animeId | The anime entry ID to delete from the list. |
+
+##### Returns
+[System.String] represnting the state of deleting "Deleted" or detailed error message.
+
+[System.String]: <https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx>
+[System.Int32]: <https://msdn.microsoft.com/en-us/library/system.int32(v=vs.80).aspx>
+[MALAPI.Dto.AnimeEntry]: <#animeentry>
+[MALAPI.Dto.AnimeSearchEntry]: <#animesearchentry>
+[AnimeController]: <#animecontroller>
+[MangaController]: <#mangacontroller>
+[UsersController]: <#userscontroller>
+[SearchController]: <#searchcontroller>
+[AddAnime]: <#addanime>
+[AddAnimeAsync]: <#addanimeasync>
+[UpdateAnime]: <#updateanime>
+[UpdateAnimeAsync]: <#updateanimeasync>
+[DeleteAnime]: <#deleteanime>
+[DeleteAnimeAsync]: <#deleteanimeasync>
