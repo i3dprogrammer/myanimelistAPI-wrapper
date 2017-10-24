@@ -17,14 +17,17 @@ namespace MALAPI.Dto
         /// Info about the user list.
         /// </summary>
         [XmlElement("myinfo")]
-        public UserAnimeInfo Info { get; set; }
+        public UserMangaInfo Info { get; set; }
         /// <summary>
         /// The mangas in that user list.
         /// </summary>
         [XmlElement("manga")]
-        public List<UserAnime> Mangas { get; set; }
+        public List<UserMangaEntry> Mangas { get; set; }
     }
 
+    /// <summary>
+    /// Info about the manga list user.
+    /// </summary>
     [Serializable, XmlRoot("myinfo")]
     public class UserMangaInfo
     {
@@ -83,7 +86,7 @@ namespace MALAPI.Dto
     /// Manga entry in the user list.
     /// </summary>
     [Serializable, XmlRoot("manga")]
-    public class UserManga
+    public class UserMangaEntry
     {
         /// <summary>
         /// Manga ID in the database.
@@ -121,12 +124,15 @@ namespace MALAPI.Dto
         [XmlElement("series_status")]
         public int SeriesStatus { get; set; }
         /// <summary>
-        /// The start date of manga series, or 0 Ticks if it's unknown.
+        /// The start publishing date of manga series, or 0 Ticks if it's unknown.
         /// </summary>
         [XmlIgnore]
         public DateTime SeriesStartDate { get; set; }
+        /// <summary>
+        /// The start publishing date of manga series as string.
+        /// </summary>
         [XmlElement("series_start")]
-        internal string SeriesStartStr
+        public string SeriesStartDateStr
         {
             get
             {
@@ -134,8 +140,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 SeriesStartDate = temp;
             }
         }
@@ -144,8 +149,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime SeriesEndDate { get; set; }
+        /// <summary>
+        /// The end date of manga series as string.
+        /// </summary>
         [XmlElement("series_end")]
-        internal string SeriesEndStr
+        public string SeriesEndDateStr
         {
             get
             {
@@ -153,12 +161,10 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 SeriesEndDate = temp;
             }
         }
-
         /// <summary>
         /// Anime series image link.
         /// </summary>
@@ -184,8 +190,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime MyStartDate { get; set; }
+        /// <summary>
+        /// The date you started reading the manga series as string.
+        /// </summary>
         [XmlElement("my_start_date")]
-        internal string MyStartDateStr
+        public string MyStartDateStr
         {
             get
             {
@@ -193,8 +202,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 MyStartDate = temp;
             }
         }
@@ -202,39 +210,72 @@ namespace MALAPI.Dto
         /// The date you finished reading the manga series, or 0 Ticks if it's unknown.
         /// </summary>
         [XmlIgnore]
-        public DateTime MyFinishDate { get; set; }
+        public DateTime MyEndDate { get; set; }
+        /// <summary>
+        /// The date you finished reading the manga series as string.
+        /// </summary>
         [XmlElement("my_finish_date")]
-        internal string MyFninishDateStr
+        public string MyEndDateStr
         {
             get
             {
-                return MyFinishDate.ToShortDateString();
+                return MyEndDate.ToShortDateString();
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
-                MyFinishDate = temp;
+                DateTime.TryParse(value, out DateTime temp);
+                MyEndDate = temp;
             }
         }
         /// <summary>
         /// The score you gave this manga series.
         /// </summary>
+        [XmlIgnore]
+        public EntryScore MyScore { get; set; }
+        /// <summary>
+        /// The score you give this manga as int (1-10)
+        /// </summary>
         [XmlElement("my_score")]
-        public int MyScore { get; set; }
+        public int ScoreInt
+        {
+            get
+            {
+                return (int)MyScore;
+            }
+            set
+            {
+                MyScore = (EntryScore)value;
+            }
+        }
         /// <summary>
         /// The manga entry status Reading, Completed, Dropped, Onhold and PlanToRead.
         /// </summary>
-        [XmlElement("my_status")]
         public MangaListStatus MyStatus { get; set; }
+        /// <summary>
+        /// The status of the manga. 0=Reading, 1=Completed, Dropped, Onhold and PlanToRead.
+        /// </summary>
+        [XmlElement("my_status")]
+        public int MyStatusInt
+        {
+            get
+            {
+                return (int)MyStatus;
+            }
+            set
+            {
+                MyStatus = (MangaListStatus)value;
+            }
+        }
         /// <summary>
         /// The number of times you reread the manga series.
         /// </summary>
         [XmlIgnore]
         public int MyRereadingCount { get; set; }
-
-        [XmlElement("my_rereading")]
-        internal string MyRereadingStr
+        /// <summary>
+        /// The number of times you reread this manga series as string.
+        /// </summary>
+        [XmlElement("my_reading")]
+        public string MyRereadingCountStr
         {
             get
             {
@@ -242,8 +283,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                int temp = 0;
-                int.TryParse(value, out temp);
+                int.TryParse(value, out int temp);
                 MyRereadingCount = temp;
             }
         }
@@ -251,7 +291,7 @@ namespace MALAPI.Dto
         /// Your current reread chapter number.
         /// </summary>
         [XmlElement("my_rereading_chap")]
-        public int MyReadingChapter { get; set; }
+        public int MyRereadingChapter { get; set; }
         /// <summary>
         /// The last time you updated this manga entry.
         /// </summary>

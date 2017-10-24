@@ -9,7 +9,7 @@ namespace MALAPI
     /// <summary>
     /// The retrieve type you want from the method Anime/Manga.
     /// </summary>
-    public enum RetrieveType
+    internal enum RetrieveType
     {
         /// <summary>
         /// Use Anime when you want to retrieve the animes using the method.
@@ -75,6 +75,7 @@ namespace MALAPI
         PlanToRead = 6,
     }
 
+    //TODO: Complete this / assign correct values.
     /// <summary>
     /// Represents the status of an anime.
     /// </summary>
@@ -102,6 +103,7 @@ namespace MALAPI
         Cancelled,
     }
 
+    //TODO: assign correct values.
     /// <summary>
     /// Represents the type of an anime.
     /// </summary>

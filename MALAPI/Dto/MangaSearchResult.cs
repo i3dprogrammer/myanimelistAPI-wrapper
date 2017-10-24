@@ -48,7 +48,7 @@ namespace MALAPI.Dto
         [XmlElement("synonyms")]
         public string Synonyms { get; set; }
         /// <summary>
-        /// Anime score.
+        /// Manga score by total members.
         /// </summary>
         [XmlElement("score")]
         public float Score { get; set; }
@@ -67,8 +67,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime StartDate { get; set; }
+        /// <summary>
+        /// Manga start date as a string.
+        /// </summary>
         [XmlElement("start_date")]
-        internal string StartDateStr
+        public string StartDateStr
         {
             get
             {
@@ -76,8 +79,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 StartDate = temp;
             }
         }
@@ -86,16 +88,18 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime EndDate { get; set; }
+        /// <summary>
+        /// Manga end date as a string.
+        /// </summary>
         [XmlElement("end_date")]
-        internal string EndDateStr
+        public string EndDateStr
         {
             get
             {
                 return EndDate.ToShortDateString();
             }
             set {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 EndDate = temp;
             }
         }

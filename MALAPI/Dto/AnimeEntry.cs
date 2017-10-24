@@ -11,7 +11,7 @@ namespace MALAPI.Dto
     /// An object the holds anime data to be added or updated in a specific user anime list.
     /// </summary>
     [XmlRoot("entry")]
-    public class Anime
+    public class AnimeEntry
     {
         /// <summary>
         /// The count of episodes you watched from this anime.
@@ -26,8 +26,23 @@ namespace MALAPI.Dto
         /// <summary>
         /// The score you give this anime.
         /// </summary>
+        [XmlIgnore]
+        public EntryScore Score { get; set; }
+        /// <summary>
+        /// The score you give this anime as int (1-10)
+        /// </summary>
         [XmlElement("score")]
-        public int Score { get; set; }
+        public int ScoreInt
+        {
+            get
+            {
+                return (int)Score;
+            }
+            set
+            {
+                Score = (EntryScore)value;
+            }
+        }
         /// <summary>
         /// Unknown. ??? Probably where you store this anime PC/Lap??
         /// </summary>
@@ -53,8 +68,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime DateStart { get; set; }
+        /// <summary>
+        /// The date you started watching this anime as string.
+        /// </summary>
         [XmlElement("date_start")]
-        internal string DateStartStr
+        public string DateStartStr
         {
             get
             {
@@ -66,8 +84,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime DateEnd { get; set; }
+        /// <summary>
+        /// The date you finished watching this anime as string.
+        /// </summary>
         [XmlElement("date_finish")]
-        internal string DateEndStr
+        public string DateEndStr
         {
             get
             {

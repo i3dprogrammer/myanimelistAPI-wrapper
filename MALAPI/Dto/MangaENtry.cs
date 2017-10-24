@@ -11,7 +11,7 @@ namespace MALAPI.Dto
     /// An object the holds manga data to be added or updated in a specific user manga list.
     /// </summary>
     [XmlRoot("entry")]
-    public class Manga
+    public class MangaEntry
     {
         /// <summary>
         /// The count of chapters you've read from this manga.
@@ -31,8 +31,23 @@ namespace MALAPI.Dto
         /// <summary>
         /// The score you give this manga.
         /// </summary>
+        [XmlIgnore]
+        public EntryScore Score { get; set; }
+        /// <summary>
+        /// The score you give this manga as int (1-10)
+        /// </summary>
         [XmlElement("score")]
-        public int Score { get; set; }
+        public int ScoreInt
+        {
+            get
+            {
+                return (int)Score;
+            }
+            set
+            {
+                Score = (EntryScore)value;
+            }
+        }
         /// <summary>
         /// The count of times you've reread the manga.
         /// </summary>
@@ -44,12 +59,15 @@ namespace MALAPI.Dto
         [XmlElement("reread_value")]
         public int RereadValue { get; set; }
         /// <summary>
-        /// The date youve started reading this manga.
+        /// The date you've started reading this manga.
         /// </summary>
         [XmlIgnore]
         public DateTime DateStart { get; set; }
+        /// <summary>
+        /// The date you've started reading this manga as a string.
+        /// </summary>
         [XmlElement("date_start")]
-        internal string DateStartStr
+        public string DateStartStr
         {
             get
             {
@@ -61,8 +79,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime DateEnd { get; set; }
+        /// <summary>
+        /// The date you've finished reading this manga as a string.
+        /// </summary>
         [XmlElement("date_finish")]
-        internal string DateEndStr
+        public string DateEndStr
         {
             get
             {

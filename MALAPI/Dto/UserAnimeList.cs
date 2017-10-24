@@ -23,7 +23,7 @@ namespace MALAPI.Dto
         /// The animes in that user list.
         /// </summary>
         [XmlElement("anime")]
-        public List<UserAnime> Animes { get; set; }
+        public List<UserAnimeEntry> Animes { get; set; }
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ namespace MALAPI.Dto
     /// Anime entry in the user list.
     /// </summary>
     [Serializable, XmlRoot("anime")]
-    public class UserAnime
+    public class UserAnimeEntry
     {
         /// <summary>
         /// Anime ID in the database.
@@ -109,9 +109,16 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public AnimeType SeriesType { get; set; }
+        /// <summary>
+        /// Series type as integer.
+        /// </summary>
         [XmlElement("series_type")]
-        internal int seriesType
+        public int SeriesTypeInt
         {
+            get
+            {
+                return (int)SeriesType;
+            }
             set
             {
                 SeriesType = (AnimeType)value;
@@ -128,12 +135,15 @@ namespace MALAPI.Dto
         [XmlElement("series_status")]
         public string SeriesStatus { get; set; }
         /// <summary>
-        /// The start date of anime series, or 0 Ticks if it's unknown.
+        /// The start air date of anime series, or 0 Ticks if it's unknown.
         /// </summary>
         [XmlIgnore]
         public DateTime SeriesStartDate { get; set; }
+        /// <summary>
+        /// The start air date of anime series as string.
+        /// </summary>
         [XmlElement("series_start")]
-        internal string SeriesStartStr
+        public string SeriesStartDateStr
         {
             get
             {
@@ -141,8 +151,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 SeriesStartDate = temp;
             }
         }
@@ -151,8 +160,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime SeriesEndDate { get; set; }
+        /// <summary>
+        /// The end air date of anime series as string.
+        /// </summary>
         [XmlElement("series_end")]
-        internal string SeriesEndStr
+        public string SeriesEndDateStr
         {
             get
             {
@@ -160,8 +172,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 SeriesEndDate = temp;
             }
         }
@@ -185,8 +196,11 @@ namespace MALAPI.Dto
         /// </summary>
         [XmlIgnore]
         public DateTime MyStartDate { get; set; }
+        /// <summary>
+        /// The date you started watching the anime series as string.
+        /// </summary>
         [XmlElement("my_start_date")]
-        internal string MyStartDateStr
+        public string MyStartDateStr
         {
             get
             {
@@ -194,8 +208,7 @@ namespace MALAPI.Dto
             }
             set
             {
-                DateTime temp;
-                DateTime.TryParse(value, out temp);
+                DateTime.TryParse(value, out DateTime temp);
                 MyStartDate = temp;
             }
         }
@@ -203,45 +216,73 @@ namespace MALAPI.Dto
         /// The date you finished watching the anime series, or 0 Ticks if it's unknown.
         /// </summary>
         [XmlIgnore]
-        public DateTime MyFinishDate { get; set; }
+        public DateTime MyEndDate { get; set; }
+        /// <summary>
+        /// The date you finished watching the anime series as string.
+        /// </summary>
         [XmlElement("my_finish_date")]
-        internal string MyFninishDateStr
+        public string MyEndDateStr
         {
             get
             {
-                return MyFinishDate.ToShortDateString();
+                return MyEndDate.ToShortDateString();
             }
             set
             {
                 DateTime.TryParse(value, out DateTime temp);
-                MyFinishDate = temp;
+                MyEndDate = temp;
             }
         }
         /// <summary>
         /// The score you gave this anime series.
         /// </summary>
+        [XmlIgnore]
+        public EntryScore MyScore { get; set; }
+        /// <summary>
+        /// The score you give this anime as int (1-10)
+        /// </summary>
         [XmlElement("my_score")]
-        public int MyScore { get; set; }
+        public int MyScoreInt
+        {
+            get
+            {
+                return (int)MyScore;
+            }
+            set
+            {
+                MyScore = (EntryScore)value;
+            }
+        }
         /// <summary>
         /// The anime entry status Watching, Completed, Dropped, Onhold and PlanToWatch.
         /// </summary>
         [XmlIgnore]
         public AnimeListStatus MyStatus { get; set; }
+        /// <summary>
+        /// The status of the anime. 0=Watching, 1=Completed, Dropped, Onhold and PlanToWatch.
+        /// </summary>
         [XmlElement("my_status")]
-        public int myStatus
+        public int MyStatusInt
         {
+            get
+            {
+                return (int)MyStatus;
+            }
             set
             {
                 MyStatus = (AnimeListStatus)value;
             }
         }
         /// <summary>
-        /// The number of times you rewatched that anime series.
+        /// The number of times you rewatched this anime series.
         /// </summary>
         [XmlIgnore]
         public int MyRewatchingCount { get; set; }
+        /// <summary>
+        /// The number of times you rewatched this anime series as string.
+        /// </summary>
         [XmlElement("my_rewatching")]
-        internal string MyRewatchingStr
+        public string MyRewatchingCountStr
         {
             get
             {
