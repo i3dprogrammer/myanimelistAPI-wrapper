@@ -83,6 +83,14 @@ We Use the Anime/Manga Controllers to Add, Update or Delete entries from the aut
 
 ## MALAPI.API
 This is the main API object you deal with the entire time. You use it to manage all the Controllers.
+
+| API Controllers |
+| ----------------- |
+| [AnimeController] | 
+| [UsersController] |
+| [MangaController] |
+| [SearchController] |
+
 There's 2 constructors available for this class.
 
 ```cs
@@ -95,13 +103,6 @@ Initializes new mal client without any authentication. Using Controllers that re
 var api = new MALAPI.API("USERNAME","PASSWORD")
 ```
 Initializes new authenticated myanimelist client.
-
-| API Controllers |
-| ----------------- |
-| [AnimeController] | 
-| [UsersController] |
-| [MangaController] |
-| [SearchController] |
 
 ### AnimeController
 A controller to managa myanimelist anime API. <br/><b>Requires API authentication.</b>
