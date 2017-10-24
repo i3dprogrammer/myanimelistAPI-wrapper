@@ -4,8 +4,8 @@ An object the holds anime data to be added or updated in a specific user anime l
 | Property Type | Property Name | Property Description |
 | ------------- | ------------- | -------------------- |
 | [System.Int32] | WatchedEpisodes | The count of episodes you watched from this anime. |
-| [MALAPI.AnimeListStatus] | Status | The status of the anime `Watching, Completed, Dropped, Onhold or PlatToWatch`. |
-| [MALAPI.EntryScore] | Score | The score you give this anime. |
+| [AnimeListStatus] | Status | The status of the anime `Watching, Completed, Dropped, Onhold or PlatToWatch`. |
+| [EntryScore] | Score | The score you give this anime. |
 | [System.Int32] | ScoreInt | The score you give this anime as int (1-10). |
 | [System.Int32] | StorageType | Unknown. |
 | [System.Int32] | StorageValue | Unknown. |
@@ -25,7 +25,7 @@ An object the holds anime data to be added or updated in a specific user anime l
 [System.String]: <https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx>
 [System.Int32]: <https://msdn.microsoft.com/en-us/library/system.int32(v=vs.80).aspx>
 [System.DateTime]: <https://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx>
-[MALAPI.AnimeListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animeliststatus>
-[MALAPI.MangaListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#mangaliststatus>
-[MALAPI.EntryScore]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#entryscore>
-[MALAPI.AnimeType]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animetype>
+[AnimeListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animeliststatus>
+[MangaListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#mangaliststatus>
+[EntryScore]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#entryscore>
+[AnimeType]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animetype>
