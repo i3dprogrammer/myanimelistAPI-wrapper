@@ -87,7 +87,7 @@ We Use the Anime/Manga Controllers to Add, Update or Delete entries from the aut
 | [UsersController] | [SearchController] |
 
 ### AnimeController
-A controller to managa myanimelist anime API.
+A controller to managa myanimelist anime API. <br/><b>Requires API authentication.</b>
 
 | Method name | Method description |
 | ----------- | ------------------ |
@@ -100,13 +100,65 @@ A controller to managa myanimelist anime API.
 | [DeleteAnime] | Deletes existing anime from user's list. |
 | [DeleteAnimeAsync] |  Deletes existing anime from user's list asynchronously. |
 
+### MangaController
+A controller to manage myanimelist manga API. <br/><b>Requires API authentication.</b>
+
+| Method name | Method description |
+| ----------- | ------------------ |
+| [AddManga] | Adds manga entry to specific user's list. |
+| [AddManga] | Adds found manga search entry to specific user's list. |
+| [AddMangaAsync] | Adds manga entry to specific user's list asynchronously. |
+| [AddMangaAsync] | Adds found manga search entry to specific user's list asynchronously. |
+| [UpdateManga] | Updates existing manga in user's list. |
+| [UpdateMangaAsync] | Updates existing manga in user's list asynchronously. |
+| [DeleteManga] | Deletes existing manga from user's list. |
+| [DeleteMangaAsync] |  Deletes existing manga from user's list asynchronously. |
+
+### UsersController
+A controller to manage myanimelist user lists API. <br/><b>Doesn't require API authentication.</b>
+
+| Method name | Method description |
+| ----------- | ------------------ |
+| [GetUserAnimeList] | Retrieves anime list for specific user. |
+| [GetUserAnimeListAsync] | Retrieves anime list for specific user asynchronously. |
+| [GetUserMangaList] | Retrieves manga list for specific user. |
+| [GetUserMangaListAsync] | Retrieves manga list for specific user asynchronously. |
+
+### SearchController
+A controller to manage myanimelist search API. <br/><b>Requires API authentication.</b>
+
+| Method name | Method description |
+| ----------- | ------------------ |
+| [SearchForAnime] | Searches myanimelist for anime. |
+| [SearchForAnimeAsync] | Searches myanimelist for anime asynchronously. |
+| [SearchForManga] | Searches myanimelist for manga. |
+| [SearchForMangaAsync] | Searches myanimelist for manga asynchronously. |
+
 [AnimeController]: <#animecontroller>
 [MangaController]: <#mangacontroller>
 [UsersController]: <#userscontroller>
 [SearchController]: <#searchcontroller>
+
 [AddAnime]: <#addanime>
 [AddAnimeAsync]: <#addanimeasync>
 [UpdateAnime]: <#updateanime>
 [UpdateAnimeAsync]: <#updateanimeasync>
 [DeleteAnime]: <#deleteanime>
 [DeleteAnimeAsync]: <#deleteanimeasync>
+
+[AddManga]: <#addmanga>
+[AddMangaAsync]: <#addmangaasync>
+[UpdateManga]: <#updatemanga>
+[UpdateMangaAsync]: <#updatemangaasync>
+[DeleteManga]: <#deletemanga>
+[DeleteMangaAsync]: <#deletemangaasync>
+
+[GetUserAnimeList]: <#getuseranimelist>
+[GetUserAnimeListAsync]: <#getuseranimelistasync>
+[GetUserMangaList]: <#getusermangalist>
+[GetUserMangaListAsync]: <#getusermangalistasync>
+
+[SearchForAnime]: <#searchforanime>
+[SearchForAnimeAsync]: <#searchforanimeasync>
+[SearchForManga]: <#searchformanga>
+[SearchForMangaAsync]: <#searchformangaasync>
