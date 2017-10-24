@@ -20,9 +20,11 @@ foreach (var entry in searchResult.Entries)
 		Console.WriteLine($"{entry.Title} -> {entry.StartDate.ToShortDateString()} to {entry.EndDate.ToShortDateString()}");
 }
 ```
-<hr/>
+
 In the above example we search for `Full Metal` and print the result based on their start/end dates. <br/>
 We use Search Controller, as Search requires myanimelist authentication we've used API Constructor with username and password.
+
+<hr/>
 
 <h3>Example 2</h3>
 
@@ -38,6 +40,8 @@ foreach (var entry in list.Animes)
 
 Here we get `3dprogrammer` user anime list, print out the total days he spent watching anime and print `3dprogrammer` anime list in a nice fashion. <br/>
 We use Users Controller which doesn't require authentication. (Here you can use either one of the constructors, both will function the same).
+
+<hr/>
 
 <h3>Example 3</h3>
 
