@@ -25,5 +25,7 @@ An object the holds anime data to be added or updated in a specific user anime l
 [System.String]: <https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx>
 [System.Int32]: <https://msdn.microsoft.com/en-us/library/system.int32(v=vs.80).aspx>
 [System.DateTime]: <https://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx>
-[MALAPI.AnimeListStatus]: <#>
-[MALAPI.EntryScore]: <#>
+[MALAPI.AnimeListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animeliststatus>
+[MALAPI.MangaListStatus]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#mangaliststatus>
+[MALAPI.EntryScore]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#entryscore>
+[MALAPI.AnimeType]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Enumerations.md#animetype>
