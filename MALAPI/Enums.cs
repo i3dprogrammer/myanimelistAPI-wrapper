@@ -138,7 +138,8 @@ namespace MALAPI
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public enum EntryScore
     {
-        Appealing = 1,
+        None,
+        Appealing,
         Horrible,
         VeryBad,
         Bad,

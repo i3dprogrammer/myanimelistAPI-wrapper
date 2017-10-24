@@ -53,7 +53,7 @@ namespace MALAPI.Dto
         [XmlElement("score")]
         public float Score { get; set; }
         /// <summary>
-        /// Unknown. ???
+        /// Manhwa, Manga, etc..???
         /// </summary>
         [XmlElement("type")]
         public string EntryType { get; set; }
@@ -127,10 +127,10 @@ namespace MALAPI.Dto
         /// <summary>
         /// Simple ToString override that returns a nice representation of the manga entry.
         /// </summary>
-        /// <returns>#{EntryType} - {Title}#{Id}</returns>
+        /// <returns>#{EntryType} - {Id}#{Title}</returns>
         public override string ToString()
         {
-            return $"#{EntryType} - {Title}#{Id}";
+            return $"#{EntryType} - {Id}#{Title}";
         }
     }
 }

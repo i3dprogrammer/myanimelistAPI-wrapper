@@ -19,19 +19,19 @@ namespace MALAPI
         /// <summary>
         /// An object to manage myanimelist anime API.
         /// </summary>
-        public Models.Anime Anime { get; set; }
+        public Controllers.AnimeController Anime { get; set; }
         /// <summary>
         /// An object to manage myanimelist manga API.
         /// </summary>
-        public Models.Manga Manga { get; set; }
+        public Controllers.MangaController Manga { get; set; }
         /// <summary>
         /// An object to manage myanimelist users list API.
         /// </summary>
-        public Models.Users Users { get; set; }
+        public Controllers.UsersController Users { get; set; }
         /// <summary>
         /// An object to manage myanimelist search API.
         /// </summary>
-        public Models.Search Search { get; set; }
+        public Controllers.SearchController Search { get; set; }
 
         /// <summary>
         /// Initializes new client without authentication.
@@ -39,10 +39,10 @@ namespace MALAPI
         /// </summary>
         public API() : base()
         {
-            Anime = new Models.Anime(this);
-            Manga = new Models.Manga(this);
-            Users = new Models.Users(this);
-            Search = new Models.Search(this);
+            Anime = new Controllers.AnimeController(this);
+            Manga = new Controllers.MangaController(this);
+            Users = new Controllers.UsersController(this);
+            Search = new Controllers.SearchController(this);
         }
         /// <summary>
         /// Initializes new client with authentication.
@@ -51,10 +51,10 @@ namespace MALAPI
         /// <param name="pass">myanimelist Password</param>
         public API(string user, string pass) : base(user, pass)
         {
-            Anime = new Models.Anime(this);
-            Manga = new Models.Manga(this);
-            Users = new Models.Users(this);
-            Search = new Models.Search(this);
+            Anime = new Controllers.AnimeController(this);
+            Manga = new Controllers.MangaController(this);
+            Users = new Controllers.UsersController(this);
+            Search = new Controllers.SearchController(this);
         }
     }
 }

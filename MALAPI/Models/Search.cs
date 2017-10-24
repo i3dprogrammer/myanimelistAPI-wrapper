@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static MALAPI.GenericXMLDeserializer;
-namespace MALAPI.Models
+namespace MALAPI.Controllers
 {
 
     /// <summary>
     /// A model to manage myanimelist search API.
     /// </summary>
-    public class Search
+    public class SearchController
     {
         private API m_api;
 
-        internal Search(API api)
+        internal SearchController(API api)
         {
             m_api = api;
         }

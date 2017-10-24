@@ -6,16 +6,16 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static MALAPI.GenericXMLDeserializer;
-namespace MALAPI.Models
+namespace MALAPI.Controllers
 {
     /// <summary>
     /// A model to manage myanimelist anime API.
     /// </summary>
-    public class Anime
+    public class AnimeController
     {
         private API m_api;
 
-        internal Anime(API api)
+        internal AnimeController(API api)
         {
             m_api = api;
         }

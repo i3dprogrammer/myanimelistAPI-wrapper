@@ -121,10 +121,10 @@ namespace MALAPI.Dto
         /// <summary>
         /// Simple ToString override that returns a nice representation of the anime entry.
         /// </summary>
-        /// <returns>#{EntryType} - {Title}#{Id}</returns>
+        /// <returns>#{EntryType} - {Id}#{Title}</returns>
         public override string ToString()
         {
-            return $"#{EntryType} - {Title}#{Id}";
+            return $"#{EntryType} - {Id}#{Title}";
         }
     }
 }
