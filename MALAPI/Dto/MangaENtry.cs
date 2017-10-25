@@ -73,6 +73,7 @@ namespace MALAPI.Dto
             {
                 return DateStart.ToString("mmddyyyy");
             }
+            set { }
         }
         /// <summary>
         /// The date you've finished reading this manga.
@@ -89,6 +90,7 @@ namespace MALAPI.Dto
             {
                 return DateEnd.ToString("mmddyyyy");
             }
+            set { }
         }
         /// <summary>
         /// The manga priority on the list.

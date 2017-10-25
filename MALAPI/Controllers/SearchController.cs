@@ -28,15 +28,7 @@ namespace MALAPI.Controllers
         public AnimeSearchResult SearchForAnime(string searchQuery)
         {
             m_api.CheckAuth();
-
-            if (string.IsNullOrEmpty(searchQuery))
-                return null;
-            string data = m_api.m_client.GetAsync(string.Format(MAL.url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync().Result;
-
-            if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
-                return null;
-
-            return XMLDeserialize<AnimeSearchResult>(data);
+            return m_api.GetDeserializedObject<AnimeSearchResult>(string.Format(MAL.url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery));
         }
 
         /// <summary>
@@ -47,15 +39,7 @@ namespace MALAPI.Controllers
         public MangaSearchResult SearchForManga(string searchQuery)
         {
             m_api.CheckAuth();
-
-            if (string.IsNullOrEmpty(searchQuery))
-                return null;
-            string data = m_api.m_client.GetAsync(string.Format(MAL.url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync().Result;
-
-            if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
-                return null;
-
-            return XMLDeserialize<MangaSearchResult>(data);
+            return m_api.GetDeserializedObject<MangaSearchResult>(string.Format(MAL.url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery));
         }
 
         /// <summary>
@@ -66,15 +50,7 @@ namespace MALAPI.Controllers
         public async Task<AnimeSearchResult> SearchForAnimeAsync(string searchQuery)
         {
             m_api.CheckAuth();
-
-            if (string.IsNullOrEmpty(searchQuery))
-                return null;
-            string data = await m_api.m_client.GetAsync(string.Format(MAL.url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
-
-            if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
-                return null;
-
-            return XMLDeserialize<AnimeSearchResult>(data);
+            return await m_api.GetDeserializedObjectAsync<AnimeSearchResult>(string.Format(MAL.url_search, RetrieveType.Anime.ToString().ToLower(), searchQuery));
         }
 
         /// <summary>
@@ -85,15 +61,7 @@ namespace MALAPI.Controllers
         public async Task<MangaSearchResult> SearchForMangaAsync(string searchQuery)
         {
             m_api.CheckAuth();
-
-            if (string.IsNullOrEmpty(searchQuery))
-                return null;
-            string data = await m_api.m_client.GetAsync(string.Format(MAL.url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery)).Result.Content.ReadAsStringAsync();
-
-            if (string.IsNullOrEmpty(data) || string.IsNullOrWhiteSpace(data))
-                return null;
-
-            return XMLDeserialize<MangaSearchResult>(data);
+            return await m_api.GetDeserializedObjectAsync<MangaSearchResult>(string.Format(MAL.url_search, RetrieveType.Manga.ToString().ToLower(), searchQuery));
         }
     }
 }

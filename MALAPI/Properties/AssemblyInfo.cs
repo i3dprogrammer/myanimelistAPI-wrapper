@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MALAPI-Wrapper")]
-[assembly: AssemblyDescription("A C# Wrapper for myanimelist main API. It contains async and sync methods for all available methods by myanimelist.")]
+[assembly: AssemblyDescription("A C# Wrapper for myanimelist main API. It contains async and sync methods for all available methods by myanimelist. Check github for documentation and examples.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("3DProgrammer")]
 [assembly: AssemblyProduct("MALAPI-Wrapper")]

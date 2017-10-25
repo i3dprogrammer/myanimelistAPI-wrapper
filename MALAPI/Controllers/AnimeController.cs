@@ -30,10 +30,7 @@ namespace MALAPI.Controllers
         {
             m_api.CheckAuth();
 
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(addedAnime)),
-            });
-            return m_api.m_client.PostAsync(string.Format(MAL.url_addAnime, animeId), content).Result.Content.ReadAsStringAsync().Result;
+            return m_api.PostSerializedObject(addedAnime, string.Format(MAL.url_addAnime, animeId));
         }
 
         /// <summary>
@@ -42,18 +39,16 @@ namespace MALAPI.Controllers
         /// <param name="searchEntry">The search entry you found.</param>
         /// <param name="status">The status of the anime Watching, Completed, Onhold, Dropped...</param>
         /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
-        public string AddAnime(Dto.AnimeSearchEntry searchEntry, AnimeListStatus status)
+        public string AddAnime(AnimeSearchEntry searchEntry, AnimeListStatus status)
         {
             m_api.CheckAuth();
-            AnimeEntry anime = new AnimeEntry()
+
+            AnimeEntry addedAnime = new AnimeEntry()
             {
                 Status = status,
             };
 
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(anime)),
-            });
-            return m_api.m_client.PostAsync(string.Format(MAL.url_addAnime, searchEntry.Id), content).Result.Content.ReadAsStringAsync().Result;
+            return m_api.PostSerializedObject(addedAnime, string.Format(MAL.url_addAnime, searchEntry.Id));
         }
 
         /// <summary>
@@ -66,10 +61,7 @@ namespace MALAPI.Controllers
         {
             m_api.CheckAuth();
 
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(newAnimeInfo)),
-            });
-            return m_api.m_client.PostAsync(string.Format(MAL.url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync().Result;
+            return m_api.PostSerializedObject(newAnimeInfo, string.Format(MAL.url_updateAnime, animeId));
         }
 
         /// <summary>
@@ -80,8 +72,7 @@ namespace MALAPI.Controllers
         public string DeleteAnime(int animeId)
         {
             m_api.CheckAuth();
-
-            return m_api.m_client.PostAsync(string.Format(MAL.url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync().Result;
+            return m_api.Post(string.Format(MAL.url_deleteAnime, animeId));
         }
 
         /// <summary>
@@ -94,10 +85,7 @@ namespace MALAPI.Controllers
         {
             m_api.CheckAuthAsync();
 
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(addedAnime)),
-            });
-            return await m_api.m_client.PostAsync(string.Format(MAL.url_addAnime, animeId), content).Result.Content.ReadAsStringAsync();
+            return await m_api.PostSerializedObjectAsync(addedAnime, string.Format(MAL.url_addAnime, animeId));
         }
 
 
@@ -107,18 +95,15 @@ namespace MALAPI.Controllers
         /// <param name="searchEntry">The search entry you found.</param>
         /// <param name="status">The status of the anime Watching, Completed, Onhold, Dropped...</param>
         /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
-        public async Task<string> AddAnimeAsync(Dto.AnimeSearchEntry searchEntry, AnimeListStatus status)
+        public async Task<string> AddAnimeAsync(AnimeSearchEntry searchEntry, AnimeListStatus status)
         {
             m_api.CheckAuthAsync();
-            AnimeEntry anime = new AnimeEntry()
+            AnimeEntry addedAnime = new AnimeEntry()
             {
                 Status = status,
             };
 
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(anime)),
-            });
-            return await m_api.m_client.PostAsync(string.Format(MAL.url_addAnime, searchEntry.Id), content).Result.Content.ReadAsStringAsync();
+            return await m_api.PostSerializedObjectAsync(addedAnime, string.Format(MAL.url_addAnime, searchEntry.Id));
         }
 
         /// <summary>
@@ -130,11 +115,7 @@ namespace MALAPI.Controllers
         public async Task<string> UpdateAnimeAsync(AnimeEntry newAnimeInfo, int animeId)
         {
             m_api.CheckAuthAsync();
-
-            HttpContent content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("data", XMLSerialize(newAnimeInfo)),
-            });
-            return await m_api.m_client.PostAsync(string.Format(MAL.url_updateAnime, animeId), content).Result.Content.ReadAsStringAsync();
+            return await m_api.PostSerializedObjectAsync(newAnimeInfo, string.Format(MAL.url_updateAnime, animeId));
         }
 
         /// <summary>
@@ -146,7 +127,7 @@ namespace MALAPI.Controllers
         {
             m_api.CheckAuthAsync();
 
-            return await m_api.m_client.PostAsync(string.Format(MAL.url_deleteAnime, animeId), null).Result.Content.ReadAsStringAsync();
+            return await m_api.PostAsync(string.Format(MAL.url_deleteAnime, animeId));
         }
     }
 }

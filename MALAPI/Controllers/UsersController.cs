@@ -27,10 +27,7 @@ namespace MALAPI.Controllers
         /// <returns>Returns an instance of UserAnimeList on success.</returns>
         public UserAnimeList GetUserAnimeList(string user = "")
         {
-            if (user == "") user = m_api.m_username;
-            if (user == "") throw new Exception("No username entered.");
-            string data = m_api.m_client.GetAsync(string.Format(MAL.url_userlist, user, RetrieveType.Anime.ToString().ToLower())).Result.Content.ReadAsStringAsync().Result;
-            return XMLDeserialize<UserAnimeList>(data);
+            return m_api.GetDeserializedObject<UserAnimeList>(string.Format(MAL.url_userlist, CheckUserName(user), RetrieveType.Anime.ToString().ToLower()));
         }
 
         /// <summary>
@@ -40,10 +37,7 @@ namespace MALAPI.Controllers
         /// <returns>Returns an instance of UserMangaList on success.</returns>
         public UserMangaList GetUserMangaList(string user = "")
         {
-            if (user == "") user = m_api.m_username;
-            if (user == "") throw new Exception("No username entered.");
-            string data = m_api.m_client.GetAsync(string.Format(MAL.url_userlist, user, RetrieveType.Manga.ToString().ToLower())).Result.Content.ReadAsStringAsync().Result;
-            return XMLDeserialize<UserMangaList>(data);
+            return m_api.GetDeserializedObject<UserMangaList>(string.Format(MAL.url_userlist, CheckUserName(user), RetrieveType.Manga.ToString().ToLower()));
         }
 
         /// <summary>
@@ -53,10 +47,7 @@ namespace MALAPI.Controllers
         /// <returns></returns>
         public async Task<UserAnimeList> GetUserAnimeListAsync(string user = "")
         {
-            if (user == "") user = m_api.m_username;
-            if (user == "") throw new Exception("No username entered.");
-            string data = await m_api.m_client.GetAsync(string.Format(MAL.url_userlist, user, RetrieveType.Anime.ToString().ToLower())).Result.Content.ReadAsStringAsync();
-            return XMLDeserialize<UserAnimeList>(data);
+            return await m_api.GetDeserializedObjectAsync<UserAnimeList>(string.Format(MAL.url_userlist, CheckUserName(user), RetrieveType.Anime.ToString().ToLower()));
         }
 
         /// <summary>
@@ -66,10 +57,14 @@ namespace MALAPI.Controllers
         /// <returns></returns>
         public async Task<UserMangaList> GetUserMangaListAsync(string user = "")
         {
+            return await m_api.GetDeserializedObjectAsync<UserMangaList>(string.Format(MAL.url_userlist, CheckUserName(user), RetrieveType.Manga.ToString().ToLower()));
+        }
+
+        private string CheckUserName(string user)
+        {
             if (user == "") user = m_api.m_username;
             if (user == "") throw new Exception("No username entered.");
-            string data = await m_api.m_client.GetAsync(string.Format(MAL.url_userlist, user, RetrieveType.Manga.ToString().ToLower())).Result.Content.ReadAsStringAsync();
-            return XMLDeserialize<UserMangaList>(data);
+            return user;
         }
     }
 }

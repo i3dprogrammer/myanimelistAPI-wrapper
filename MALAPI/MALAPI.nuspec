@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>malapi-wrapper</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/i3dprogrammer/myanimelistAPI-wrapper</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First relase of MALAPI.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>myanimelist api wrapper c# anime manga api-wrapper</tags>
+  </metadata>
+</package>

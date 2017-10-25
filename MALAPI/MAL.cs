@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using static MALAPI.GenericXMLDeserializer;
 
 namespace MALAPI
 {
@@ -85,6 +86,42 @@ namespace MALAPI
                 }
                 validCredentials = true;
             }
+        }
+
+        internal T GetDeserializedObject<T>(string url)
+        {
+            return XMLDeserialize<T>(m_client.GetAsync(url).Result.Content.ReadAsStringAsync().Result);
+        }
+
+        internal async Task<T> GetDeserializedObjectAsync<T>(string url)
+        {
+            return XMLDeserialize<T>(await m_client.GetAsync(url).Result.Content.ReadAsStringAsync());
+        }
+
+        internal string PostSerializedObject<T>(T obj, string url)
+        {
+            HttpContent content = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("data", XMLSerialize(obj)),
+            });
+            return m_client.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
+        }
+
+        internal async Task<string> PostSerializedObjectAsync<T>(T obj, string url)
+        {
+            HttpContent content = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("data", XMLSerialize(obj)),
+            });
+            return await m_client.PostAsync(url, content).Result.Content.ReadAsStringAsync();
+        }
+
+        internal string Post(string url)
+        {
+            return m_client.PostAsync(url, null).Result.Content.ReadAsStringAsync().Result;
+        }
+
+        internal async Task<string> PostAsync(string url)
+        {
+            return await m_client.PostAsync(url, null).Result.Content.ReadAsStringAsync();
         }
     }
 }

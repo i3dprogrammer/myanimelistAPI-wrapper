@@ -78,6 +78,7 @@ namespace MALAPI.Dto
             {
                 return DateStart.ToString("mmddyyyy");
             }
+            set { }
         }
         /// <summary>
         /// The date you finished watching this anime.
@@ -94,6 +95,7 @@ namespace MALAPI.Dto
             {
                 return DateEnd.ToString("mmddyyyy");
             }
+            set { }
         }
         /// <summary>
         /// The anime priority on the list.
