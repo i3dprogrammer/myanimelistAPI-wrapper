@@ -4,10 +4,10 @@ The object returned when getting a specific user anime list.
 ### Properties
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| [UserAnimeInfo] | Info | Information about the user anime list. |
-| List<[UserAnimeEntry]> | Animes | The animes in that user list. |
+| [AnimeListInfo] | Info | Information about the user anime list. |
+| List<[AnimeListEntry]> | Animes | The animes in that user list. |
 
-## UserAnimeInfo
+## AnimeListInfo
 Object that contains information about specific user anime list.
 
 ### Properties
@@ -22,7 +22,7 @@ Object that contains information about specific user anime list.
 | System.Int32 | PlanToWatchCount | Animes planned to watch count. |
 | System.Single | DaysSpentWatching | Days user spent watching anime. |
 
-## UserAnimeEntry
+## AnimeListEntry
 Anime entry in the user list.
 
 ### Properties
@@ -56,8 +56,8 @@ Anime entry in the user list.
 | System.Int64 | MyLastUpdated | The last time you updated this anime entry. |
 | System.String | MyTags | Unknown. |
 
-[UserAnimeInfo]: <#useranimeinfo>
-[UserAnimeEntry]: <#useranimeentry>
+[AnimeListInfo]: <#useranimeinfo>
+[AnimeListEntry]: <#useranimeentry>
 [AnimeSearchResult]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Dto/AnimeSearch.md#animesearchresult>
 [AnimeSearchEntry]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Dto/AnimeSearch.md#animesearchentry>
 [MangaSearchResult]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Dto/MangaSearch.md#mangasearchresult>
