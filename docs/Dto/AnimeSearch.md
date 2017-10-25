@@ -1,14 +1,18 @@
 ## AnimeSearchResult
 The object returned when searching for specific anime query.
 
-| Property Type | Property Name | Property Description |
+### Properties
+
+| Type | Name | Description |
 | ------------- | ------------- | -------------------- |
 | List<[AnimeSearchEntry]> | Entries | List of entries found by the search or a null list if nothing is found.|
 
 ## AnimeSearchEntry
 This is a anime search entry result that holds information about one search result.
 
-| Property Type | Property Name | Property Description |
+### Properties
+
+| Type | Name | Description |
 | ------------- | ------------- | -------------------- |
 | System.Int32 | Id | Anime id in database. |
 | System.String | Title | Anime title |
