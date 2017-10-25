@@ -49,7 +49,7 @@ manga entry in the user list.
 | System.String | MyEndDateStr | The date you finished reading the manga series as string format `dd-mm-yyyy`. |
 | [EntryScore] | MyScore | The score you gave this manga series `Bad, Good, Masterpiece, etc...` . |
 | System.Int32 | MyScoreInt | The score you give this manga as int `0=None, 1=Bad, 10=Masterpiece, etc...` |
-| [AnimeListStatus] | MyStatus | The manga entry status `Watching, Completed, Dropped, Onhold or PlanToWatch`. |
+| [MangaListStatus] | MyStatus | The manga entry status `Watching, Completed, Dropped, Onhold or PlanToWatch`. |
 | System.Int32 | MyStatusInt | The status of the manga `0=Reading, 1=Completed, Dropped, Onhold or PlanToRead`. |
 | System.Int32 | MyRereadingCount | The number of times you reread the manga series. |
 | System.String | MyRereadingCountStr | The number of times you reread this manga series as string. |
