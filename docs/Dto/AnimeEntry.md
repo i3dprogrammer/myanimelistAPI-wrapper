@@ -1,7 +1,9 @@
 ## AnimeEntry
 An object the holds anime data to be added or updated in a specific user anime list.
 
-| Property Type | Property Name | Property Description |
+### Properties
+
+| Type | Name | Description |
 | ------------- | ------------- | -------------------- |
 | System.Int32 | WatchedEpisodes | The count of episodes you watched from this anime. |
 | [AnimeListStatus] | Status | The status of the anime `Watching, Completed, Dropped, Onhold or PlatToWatch`. |
