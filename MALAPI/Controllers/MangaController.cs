@@ -9,13 +9,13 @@ using static MALAPI.GenericXMLDeserializer;
 namespace MALAPI.Controllers
 {
     /// <summary>
-    /// A model to manage myanimelist manga API.
+    /// A controller to manage myanimelist manga API.
     /// </summary>
     public class MangaController
     {
-        private API m_api;
+        private MAL m_api;
 
-        internal MangaController(API api)
+        internal MangaController(MAL api)
         {
             m_api = api;
         }

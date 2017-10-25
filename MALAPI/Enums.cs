@@ -45,7 +45,7 @@ namespace MALAPI
         /// <summary>
         /// Anime is in plan to watch list.
         /// </summary>
-        PlatToWatch = 6,
+        PlanToWatch = 6,
     }
 
     /// <summary>

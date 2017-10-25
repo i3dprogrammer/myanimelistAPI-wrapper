@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace MALAPI.Dto
 {
     /// <summary>
-    /// The instance returned when searching for specific manga query.
+    /// The object returned when searching for specific manga query.
     /// </summary>
     [XmlRoot("manga")]
     public class MangaSearchResult

@@ -9,21 +9,21 @@ using static MALAPI.GenericXMLDeserializer;
 namespace MALAPI.Controllers
 {
     /// <summary>
-    /// A model to manage myanimelist anime API.
+    /// A controller to manage myanimelist anime API.
     /// </summary>
     public class AnimeController
     {
-        private API m_api;
+        private MAL m_api;
 
-        internal AnimeController(API api)
+        internal AnimeController(MAL api)
         {
             m_api = api;
         }
 
         /// <summary>
-        /// Adds anime to specific user's list.
+        /// Adds anime entry to specific user's list.
         /// </summary>
-        /// <param name="addedAnime">The new added anime to the list.</param>
+        /// <param name="addedAnime">The anime entry you want to add to the list.</param>
         /// <param name="animeId">The ID of the new added anime.</param>
         /// <returns>A string represnting the state of adding "Created" or detailed error message.</returns>
         public string AddAnime(AnimeEntry addedAnime, int animeId)
@@ -37,7 +37,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Adds anime to specific user's list.
+        /// Adds found anime search entry to specific user's list.
         /// </summary>
         /// <param name="searchEntry">The search entry you found.</param>
         /// <param name="status">The status of the anime Watching, Completed, Onhold, Dropped...</param>
@@ -59,8 +59,8 @@ namespace MALAPI.Controllers
         /// <summary>
         /// Updates existing anime in user's list.
         /// </summary>
-        /// <param name="newAnimeInfo">The updated anime object.</param>
-        /// <param name="animeId">the ID of the anime you want to update.</param>
+        /// <param name="newAnimeInfo">The updated anime entry.</param>
+        /// <param name="animeId">the ID of the anime entry you want to update.</param>
         /// <returns>A string represnting the state of updating "Updated" or detailed error message.</returns>
         public string UpdateAnime(AnimeEntry newAnimeInfo, int animeId)
         {
@@ -85,7 +85,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Adds anime to specific user's list.
+        ///Adds anime entry to specific user's list asynchronously.
         /// </summary>
         /// <param name="addedAnime">The new added anime to the list.</param>
         /// <param name="animeId">The ID of the new added anime.</param>
@@ -102,7 +102,7 @@ namespace MALAPI.Controllers
 
 
         /// <summary>
-        /// Adds anime to specific user's list.
+        /// Adds found anime search entry to specific user's list asynchronously.
         /// </summary>
         /// <param name="searchEntry">The search entry you found.</param>
         /// <param name="status">The status of the anime Watching, Completed, Onhold, Dropped...</param>
@@ -122,7 +122,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Updates existing anime in user's list.
+        /// Updates existing anime in user's list asynchronously.
         /// </summary>
         /// <param name="newAnimeInfo">The updated anime object.</param>
         /// <param name="animeId">the ID of the anime you want to update.</param>
@@ -138,7 +138,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Deletes existing anime from user's list.
+        /// Deletes existing anime from user's list asynchronously.
         /// </summary>
         /// <param name="animeId">The anime ID to delete from the list.</param>
         /// <returns>A string represnting the state of deleting "Deleted" or detailed error message.</returns>

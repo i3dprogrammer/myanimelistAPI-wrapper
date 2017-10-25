@@ -17,14 +17,14 @@ namespace MALAPI.Dto
         /// The count of chapters you've read from this manga.
         /// </summary>
         [XmlElement("chapter")]
-        public int Chapter { get; set; }
+        public int ReadChapters { get; set; }
         /// <summary>
         /// The count of volumes you've read from this manga.
         /// </summary>
         [XmlElement("volume")]
-        public int Volume { get; set; }
+        public int ReadVolumes { get; set; }
         /// <summary>
-        /// The status of the manga Currently reading, dropped, onhold, etc...
+        /// The status of the manga Reading, dropped, onhold, etc...
         /// </summary>
         [XmlElement("status")]
         public MangaListStatus Status { get; set; }

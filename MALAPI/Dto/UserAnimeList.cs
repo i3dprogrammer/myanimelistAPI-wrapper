@@ -17,20 +17,20 @@ namespace MALAPI.Dto
         /// Info about the user list.
         /// </summary>
         [XmlElement("myinfo")]
-        public UserAnimeInfo Info { get; set; }
+        public AnimeListInfo Info { get; set; }
 
         /// <summary>
         /// The animes in that user list.
         /// </summary>
         [XmlElement("anime")]
-        public List<UserAnimeEntry> Animes { get; set; }
+        public List<AnimeListEntry> Animes { get; set; }
     }
 
     /// <summary>
     /// Info about the anime list user.
     /// </summary>
     [Serializable, XmlRoot("myinfo")]
-    public class UserAnimeInfo
+    public class AnimeListInfo
     {
         /// <summary>
         /// User Id.
@@ -87,7 +87,7 @@ namespace MALAPI.Dto
     /// Anime entry in the user list.
     /// </summary>
     [Serializable, XmlRoot("anime")]
-    public class UserAnimeEntry
+    public class AnimeListEntry
     {
         /// <summary>
         /// Anime ID in the database.

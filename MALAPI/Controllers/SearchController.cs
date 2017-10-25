@@ -9,13 +9,13 @@ namespace MALAPI.Controllers
 {
 
     /// <summary>
-    /// A model to manage myanimelist search API.
+    /// A controller to manage myanimelist search API.
     /// </summary>
     public class SearchController
     {
-        private API m_api;
+        private MAL m_api;
 
-        internal SearchController(API api)
+        internal SearchController(MAL api)
         {
             m_api = api;
         }
@@ -40,7 +40,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Searches myanimelist for anime, Auth required.
+        /// Searches myanimelist for manga, Auth required.
         /// </summary>
         /// <param name="searchQuery">The query to search for.</param>
         /// <returns>Returns an instance of MangaSearchResult on success.</returns>
@@ -78,7 +78,7 @@ namespace MALAPI.Controllers
         }
 
         /// <summary>
-        /// Searches myanimelist for anime, Auth required.
+        /// Searches myanimelist for manga, Auth required.
         /// </summary>
         /// <param name="searchQuery">The query to search for.</param>
         /// <returns></returns>
