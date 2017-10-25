@@ -4,6 +4,11 @@ A C# Wrapper for myanimelist main API. It contains async and sync methods for al
 # Getting started
 * Download [MALAPIv2.0.0 (45.0 KB)](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/releases/download/v2.0.0/MALAPIv2.0.0.zip) - Requires .NET Framework 4.5
 
+#### Or using NuGet Package Manager
+```
+Install-Package malapi-wrapper -Version 2.0.0 
+```
+
 # Sample examples
 <h3>Example 1</h3>
 
