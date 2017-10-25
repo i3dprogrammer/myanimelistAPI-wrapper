@@ -109,10 +109,10 @@ A controller to managa myanimelist anime API. <br/><b>Requires API authenticatio
 
 | Method name | Method description |
 | ----------- | ------------------ |
-| [AddAnime] | Adds anime entry to specific user's list. |
-| [AddAnime] | Adds found anime search entry to specific user's list. |
-| [AddAnimeAsync] | Adds anime entry to specific user's list asynchronously. |
-| [AddAnimeAsync] | Adds found anime search entry to specific user's list asynchronously. |
+| [AddAnime](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/AddAnime1.md#addanime) | Adds anime entry to specific user's list. |
+| [AddAnime](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/AddAnime2.md#addanime) | Adds found anime search entry to specific user's list. |
+| [AddAnimeAsync](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/AddAnime1.md#addanimeasync) | Adds anime entry to specific user's list asynchronously. |
+| [AddAnimeAsync](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/AddAnime2.md#addanimeasync) | Adds found anime search entry to specific user's list asynchronously. |
 | [UpdateAnime] | Updates existing anime in user's list. |
 | [UpdateAnimeAsync] | Updates existing anime in user's list asynchronously. |
 | [DeleteAnime] | Deletes existing anime from user's list. |
@@ -123,10 +123,10 @@ A controller to manage myanimelist manga API. <br/><b>Requires API authenticatio
 
 | Method name | Method description |
 | ----------- | ------------------ |
-| [AddManga] | Adds manga entry to specific user's list. |
-| [AddManga] | Adds found manga search entry to specific user's list. |
-| [AddMangaAsync] | Adds manga entry to specific user's list asynchronously. |
-| [AddMangaAsync] | Adds found manga search entry to specific user's list asynchronously. |
+| [AddManga](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/AddManga1.md#addmanga) | Adds manga entry to specific user's list. |
+| [AddManga](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/AddManga2.md#addmanga) | Adds found manga search entry to specific user's list. |
+| [AddMangaAsync](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/AddManga1.md#addmangaasync) | Adds manga entry to specific user's list asynchronously. |
+| [AddMangaAsync](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/AddManga2.md#addmangaasync) | Adds found manga search entry to specific user's list asynchronously. |
 | [UpdateManga] | Updates existing manga in user's list. |
 | [UpdateMangaAsync] | Updates existing manga in user's list asynchronously. |
 | [DeleteManga] | Deletes existing manga from user's list. |
@@ -160,24 +160,24 @@ A controller to manage myanimelist user lists API. <br/><b>Doesn't require API a
 
 [AddAnime]: <#addanime>
 [AddAnimeAsync]: <#addanimeasync>
-[UpdateAnime]: <#updateanime>
-[UpdateAnimeAsync]: <#updateanimeasync>
-[DeleteAnime]: <#deleteanime>
-[DeleteAnimeAsync]: <#deleteanimeasync>
+[UpdateAnime]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/UpdateAnime.md#updateanime>
+[UpdateAnimeAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/UpdateAnime.md#updateanimeasync>
+[DeleteAnime]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/DeleteAnime.md#deleteanime>
+[DeleteAnimeAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/AnimeController/DeleteAnime.md#deleteanimeasync>
 
 [AddManga]: <#addmanga>
 [AddMangaAsync]: <#addmangaasync>
-[UpdateManga]: <#updatemanga>
-[UpdateMangaAsync]: <#updatemangaasync>
-[DeleteManga]: <#deletemanga>
-[DeleteMangaAsync]: <#deletemangaasync>
+[UpdateManga]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/UpdateManga.md#updatemanga>
+[UpdateMangaAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/UpdateManga.md#updatemangaasync>
+[DeleteManga]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/DeleteManga.md#deletemanga>
+[DeleteMangaAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/MangaController/DeleteManga.md#deletemangaasync>
 
-[SearchForAnime]: <#searchforanime>
-[SearchForAnimeAsync]: <#searchforanimeasync>
-[SearchForManga]: <#searchformanga>
-[SearchForMangaAsync]: <#searchformangaasync>
+[SearchForAnime]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/SearchController/Search.md#searchforanime>
+[SearchForAnimeAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/SearchController/Search.md#searchforanimeasync>
+[SearchForManga]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/SearchController/Search.md#searchformanga>
+[SearchForMangaAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/SearchController/Search.md#searchformangaasync>
 
-[GetUserAnimeList]: <#getuseranimelist>
-[GetUserAnimeListAsync]: <#getuseranimelistasync>
-[GetUserMangaList]: <#getusermangalist>
-[GetUserMangaListAsync]: <#getusermangalistasync>
+[GetUserAnimeList]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/UsersController/Users.md#getuseranimelist>
+[GetUserAnimeListAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/UsersController/Users.md#getuseranimelistasync>
+[GetUserMangaList]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/UsersController/Users.md#getusermangalist>
+[GetUserMangaListAsync]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/UsersController/Users.md#getusermangalistasync>
