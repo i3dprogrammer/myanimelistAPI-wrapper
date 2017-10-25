@@ -9,7 +9,7 @@ A C# Wrapper for myanimelist main API. It contains async and sync methods for al
 
 ```cs
 var api = new MALAPI.API("USERNAME", "PASSWORD");
-var searchResult = api.Search.SearchForAnime("Full Metal");
+var searchResult = api.SearchController.SearchForAnime("Full Metal");
 foreach (var entry in searchResult.Entries)
 {
 	if (entry.StartDate.Ticks == 0) //If there's no start date.
@@ -30,7 +30,7 @@ We use Search Controller, as Search requires myanimelist authentication we've us
 
 ```cs
 var api = new MALAPI.API(); //Doesn't require authentication.
-var list = api.Users.GetUserAnimeList("3dprogrammer");
+var list = api.UsersController.GetUserAnimeList("3dprogrammer");
 Console.WriteLine($"{list.Info.DaysSpentWatching} days watching anime.");
 foreach (var entry in list.Animes)
 {
@@ -47,7 +47,7 @@ We use Users Controller which doesn't require authentication. (Here you can use 
 
 ```cs
 var api = new MALAPI.API("USERNAME", "PASSWORD");
-var searchResult = await api.Search.SearchForAnimeAsync("Bakuman");
+var searchResult = await api.SearchController.SearchForAnimeAsync("Bakuman");
 foreach (var entry in searchResult.Entries)
 {
 	//This is the exact same as the bottom one.
@@ -56,14 +56,14 @@ foreach (var entry in searchResult.Entries)
 		var anime = new MALAPI.Dto.AnimeEntry();
 		anime.Status = MALAPI.AnimeListStatus.Completed;
 		anime.Score = MALAPI.EntryScore.Masterpiece;
-		var result = await api.Anime.AddAnimeAsync(anime, entry.Id);
+		var result = await api.AnimeController.AddAnimeAsync(anime, entry.Id);
 		Console.WriteLine(result); //Created or detailed error message.
 	}
 
 	//OR
 	if (entry.EntryType == MALAPI.AnimeType.TV)
 	{
-		var result = await api.Anime.AddAnimeAsync(entry, MALAPI.AnimeListStatus.Completed);
+		var result = await api.AnimeController.AddAnimeAsync(entry, MALAPI.AnimeListStatus.Completed);
 		Console.WriteLine(result); //Created or detailed error message.
 	}
 }
