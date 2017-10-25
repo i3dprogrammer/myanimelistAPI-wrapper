@@ -10,3 +10,5 @@ Adds manga entry to the authenticated user's list
 
 ### Returns
 System.String represnting the state of adding "Created" or detailed error message.
+
+[MangaEntry]: <https://github.com/i3dprogrammer/myanimelistAPI-wrapper/blob/master/docs/Dto/AnimeEntry.md#mangaentry>
