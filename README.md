@@ -2,7 +2,7 @@
 A C# Wrapper for myanimelist main API. It contains async and sync methods for all available API calls by myanimelist. Check documentation and examples below.
 
 # Getting started
-* Download [MALAPIv2.0.0 (45.0 KB)](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/releases/download/v2.0.0/MALAPIv2.0.0.zip) - Requires .NET Framework 4.5
+* Download [MALAPIv2.1.0 (48.0 KB)](https://github.com/i3dprogrammer/myanimelistAPI-wrapper/releases/download/v2.1.0/MALAPIv2.1.0.zip) - Requires .NET Framework 4.5
 
 #### Or using NuGet Package Manager
 ```
