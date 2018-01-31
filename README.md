@@ -6,7 +6,7 @@ A C# Wrapper for myanimelist main API. It contains async and sync methods for al
 
 #### Or using NuGet Package Manager
 ```
-Install-Package malapi-wrapper -Version 2.0.0 
+Install-Package malapi-wrapper -Version 2.1.0
 ```
 
 # Sample examples
