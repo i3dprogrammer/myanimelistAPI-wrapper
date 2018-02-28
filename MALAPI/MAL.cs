@@ -79,7 +79,7 @@ namespace MALAPI
 
             if (!validCredentials)
             {
-                string data = await m_client.GetAsync(url_verifycredentials).Result.Content.ReadAsStringAsync();
+                string data = await m_client.GetStringAsync(url_verifycredentials);
                 if (data == "Invalid credentials")
                 {
                     throw new Exception(data);
@@ -95,7 +95,7 @@ namespace MALAPI
 
         internal async Task<T> GetDeserializedObjectAsync<T>(string url)
         {
-            return XMLDeserialize<T>(await m_client.GetAsync(url).Result.Content.ReadAsStringAsync());
+            return XMLDeserialize<T>(await m_client.GetStringAsync(url));
         }
 
         internal string PostSerializedObject<T>(T obj, string url)
@@ -111,7 +111,8 @@ namespace MALAPI
             HttpContent content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("data", XMLSerialize(obj)),
             });
-            return await m_client.PostAsync(url, content).Result.Content.ReadAsStringAsync();
+            var result = await m_client.PostAsync(url, content);
+            return await result.Content.ReadAsStringAsync();
         }
 
         internal string Post(string url)
@@ -121,7 +122,8 @@ namespace MALAPI
 
         internal async Task<string> PostAsync(string url)
         {
-            return await m_client.PostAsync(url, null).Result.Content.ReadAsStringAsync();
+            var result = await m_client.PostAsync(url, null);
+            return await result.Content.ReadAsStringAsync();
         }
     }
 }
